@@ -4,30 +4,30 @@
 Overview of using podman
 
 ```bash
-$ sudo Rodman search rhel                		#search for the rhel image
-$ sudo podman pull <image_name>`                     	#pull an image
-$ sudo podman run  rhel7:7.5 echo "Hello world"` 	#run the rhel image and echo "Hello world"
-$ sudo podman ps 					#list running containers
+$ sudo Rodman search rhel                		# search for the rhel image
+$ sudo podman pull <image_name>`                     	# pull an image
+$ sudo podman run  rhel7:7.5 echo "Hello world"` 	# run the rhel image and echo "Hello world"
+$ sudo podman ps 					# list running containers
 ```
-- options:
+*options:*
 ```bash
--t or `--tty 		#meaning (pseudo-terminal) 
-- or --interactive 	#Interactive mode
--d or --detach 		#means the container runs in the background
---name 			#specify the name of the container
--e			#helps specify environment variables
+-t or --tty 		# meaning (pseudo-terminal) 
+- or --interactive 	# Interactive mode
+-d or --detach 		# means the container runs in the background
+--name 			# specify the name of the container
+-e			# helps specify environment variables
 ```
-
 *Example:* 
 ```bash
 $ sudo podman run --name mysql-custom \
 	-e MYSQL_USER=redhat -e MYSQL_PASSWORD=r3dhat \
 	-e MYSQL_DATABASE=items  -e MYSQL_ROOT_PASSWORD=r00tpa55 
 	-d rhscl/mysql-57-rhel:5.7-3.14`
+
+#connect to database within container
+$ mysql -uroot
 ```
 
-- connect to database within container
-`$ mysql -uroot`
 
 ```bash
 #Verify containers started without errors
