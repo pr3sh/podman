@@ -105,26 +105,26 @@ $ sudo restorecon -R /var/dbfiles/
 $ ls -dZ /var/dbfiles
 ```
 
-*accessing container*
+```bash
+#accessing container*
 $ sudo podman run -d --name apache4 -p 80 httpd:2.4
 
 # To see ports assigned by podman
 $ sudo podman port apache3
+```
 
-ie.
+*Example*
+
+```bash
 $ sudo podman run --name mysqldb-port -e MYSQL_USER=user -e MYSQL_PASSWORD=mypa55 \
 	-e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -p 13306:3306 -d  \
 	-v /var/local/mysql:/var/lib/mysql/data rascal/mysql-57-rhel7 
+```
 
+Podman search command finds images by image name, user name., or description from all
+registeries listed in the `/etc/containers/registries.conf` configuration file 
 
-
-
-#####################################################
-
-#Podman search command finds images by image name, user name., or description from all
-registeries listed in the /etc/containers/registries.conf configuration file 
-
-$ sudo podman search [options]	
+`$ sudo podman search [options]`	
 
 #manipulting container images
 
