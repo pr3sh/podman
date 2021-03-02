@@ -123,29 +123,35 @@ registeries listed in the `/etc/containers/registries.conf` configuration file
 #### manipulting container images:
 
 ```bash
+# Save and image to file called *mysql.tar*, based on the RHEL image.
 $ sudo podman save [-o FILE_NAME] IMAGE_NAME[:TAG]
 $ sudo podman save -o mysql.tar registry.access.redhat.com/rhscl/mysql-57-rhel7
-$ sudo podman load -I mysql.tar
-$ sudo poems rmi [OPTIONS] IMAGE [IMAGE....]
-$ sudo podman rmi -a #delete all images not currently being used by a container, risky!
+
+# Load image based on tarfile 							
+$ sudo podman load [-i FILE_NAME]
+$ sudo podman load -i mysql.tar
+
+# Remove image
+$ sudo podman rmi [OPTIONS] IMAGE [IMAGE....]
+#delete all images not currently being used by a container, risky!
+$ sudo podman rmi -a 
 ```
-*Example usage*
+
+- *Commit a messge example format:*
 ```bash
 $ sudo podman commit [OPTIONS] CONTAINER \
  	[REPOSITORY[:PORT]/]IMAGE[:TAG]
-```
 
 - *Options:*
-```bash
 	--author  ""  		# Identifies who created the container image .
 	--message ""  		# Includes a commit message to the registry.
 	--format      		# Selects the format for the image.
 		       			# Valid options are oci and docker.
  ```
-
-
+ 
 ```bash 
-#See the changes made in an image
+
+# See the changes made in an image
 $ sudo podman diff <image_name>
 
 # tag an image
@@ -153,11 +159,12 @@ $ sudo podman tag [OPTIONS] IMAGE[:TAG] [REGISTRY/][USERNAME/]NAME[:TAG]
 $ sudo podman tag mysql-custom devops/mysql:snapshot
 
 #remove tag from the image
-$ sudo podman rmi devops/mysql:snapshot   									#remove tag from image
+$ sudo podman rmi devops/mysql:snapshot   									
 
 #Push image to registry
-$ sudo podman push [OPTIONS] IMAGE [DESTINATION] 							#if we don't specify destination,podman will use one of the default registries.
-$ sudo podman
+#if we don't specify destination,podman will use one of the default registries.
+$ sudo podman push [OPTIONS] IMAGE [DESTINATION]
+
 ```
 
 
