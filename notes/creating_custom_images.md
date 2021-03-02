@@ -30,11 +30,11 @@ USER apache
 ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-D","FOREGROUND"]
 ```
-```
-- 	`FROM` delcares the new container image extends
-- 	`LABEL` responsible for adding generic metadata. A label is a simple key-value pair.
-- 	`MAINTAINER` indicates the Author field of the generated container image\'s metadata.
--	`RUN` executes commands in a new layer on top of the current image.The shell used to execute command is /bin/bash
--	`EXPOSE` indicates that the container listens on a specified network port at runtime.
--	 `ENTRYPOINT` defines both the command to be enxecuted and the parameters
+
+- `FROM` delcares the new container image extends
+- `LABEL` responsible for adding generic metadata. A label is a simple key-value pair.
+- `MAINTAINER` indicates the Author field of the generated container image\'s metadata.
+- `RUN` executes commands in a new layer on top of the current image.The shell used to execute command is /bin/bash
+- `EXPOSE` indicates that the container listens on a specified network port at runtime.
+- `ENTRYPOINT` defines both the command to be enxecuted and the parameters
 
