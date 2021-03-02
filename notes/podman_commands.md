@@ -1,11 +1,17 @@
 
-### Baisc commands
-`$ sudo Rodman search rhel` #search for the rhel image
-`$ sudo podman pull <image_name>` #pull an image
-`$ sudo podman run  rhel7:7.5 echo "Hello world"` #run the rhel image and echo "Hello world"
-`$ sudo podman ps` #list running containers
-#### Options:
-`-t`or  `--tty` meaning (pseudo-terminal) 
+### Abstract
+
+Overview of using podman
+
+```
+$ sudo Rodman search rhel                			 #search for the rhel image
+$ sudo podman pull <image_name>`                     		 #pull an image
+$ sudo podman run  rhel7:7.5 echo "Hello world"`. 		 #run the rhel image and echo "Hello world"
+$ sudo podman ps #list running containers
+```
+- options:
+```
+-t or  `--tty` meaning (pseudo-terminal) 
 `-i` or `--interactive` 
 `-d` or `--detach` means the container runs in the background
 `--name` #specify the name of the container
