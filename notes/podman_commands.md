@@ -151,7 +151,10 @@ $ sudo podman rmi devops/mysql:snapshot   #remove tag from image
 $ sudo podman push [OPTIONS] IMAGE [DESTINATION] #if we don't specify destination,podman will use one of the default registries.
 $ sudo podman
 
+```python 
 
+import numpy as numpy
+```
 
 
 
