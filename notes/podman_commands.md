@@ -1,7 +1,7 @@
 
 ### Abstract
 
-Overview of using podman
+Overview of using podman commands
 
 ```bash
 $ sudo Rodman search rhel                		# search for the rhel image
@@ -147,15 +147,21 @@ $ sudo podman commit [OPTIONS] CONTAINER \
 	--message ""  		# Includes a commit message to the registry.
 	--format      		# Selects the format for the image.
 		       			# Valid options are oci and docker.
+
+$ sudo podman commit mysql-basic mysql-custom		       			
  ```
  
 ```bash 
 
 # See the changes made in an image
 $ sudo podman diff <image_name>
+$ sudo podman inspect \
+	-f "{{range .Mounts}}{{println .Destination}}{{end}}" *CONTAINER_NAME/ID*
 
 # tag an image
-$ sudo podman tag [OPTIONS] IMAGE[:TAG] [REGISTRY/][USERNAME/]NAME[:TAG]	
+$ sudo podman tag [OPTIONS] IMAGE[:TAG] \
+	[REGISTRYHOST/][USERNAME/]NAME[:TAG]	
+
 $ sudo podman tag mysql-custom devops/mysql:snapshot
 
 #remove tag from the image
@@ -164,6 +170,9 @@ $ sudo podman rmi devops/mysql:snapshot
 #Push image to registry
 #if we don't specify destination,podman will use one of the default registries.
 $ sudo podman push [OPTIONS] IMAGE [DESTINATION]
+$ sudo podman push quay.io/*USER_NAME*/ngix
+#oull image
+$ sudo podman pull docker.io/nginx:17
 
 ```
 
