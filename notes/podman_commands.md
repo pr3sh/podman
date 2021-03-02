@@ -141,20 +141,25 @@ $ sudo podman commit [OPTIONS] CONTAINER \
 	--message ""  		# Includes a commit message to the registry.
 	--format      		# Selects the format for the image.
 		       			# Valid options are oci and docker.
-```
-$ sudo podman ps
+ ```
+
+
+```bash 
+#See the changes made in an image
 $ sudo podman diff <image_name>
 
-$ sudo podman tag [OPTIONS] IMAGE[:TAG] [REGISTRY/][USERNAME/]NAME[:TAG]
+# tag an image
+$ sudo podman tag [OPTIONS] IMAGE[:TAG] [REGISTRY/][USERNAME/]NAME[:TAG]	
 $ sudo podman tag mysql-custom devops/mysql:snapshot
-$ sudo podman rmi devops/mysql:snapshot   #remove tag from image
-$ sudo podman push [OPTIONS] IMAGE [DESTINATION] #if we don't specify destination,podman will use one of the default registries.
+
+#remove tag from the image
+$ sudo podman rmi devops/mysql:snapshot   									#remove tag from image
+
+#Push image to registry
+$ sudo podman push [OPTIONS] IMAGE [DESTINATION] 							#if we don't specify destination,podman will use one of the default registries.
 $ sudo podman
-
-```python 
-
-import numpy as numpy
 ```
+
 
 
 
