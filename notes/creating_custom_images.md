@@ -38,3 +38,15 @@ CMD ["-D","FOREGROUND"]
 - `EXPOSE` indicates that the container listens on a specified network port at runtime.
 - `ENTRYPOINT` defines both the command to be enxecuted and the parameters
 
+*Example usage for best practices when running successsive commands.*
+
+```bash
+ RUN yum --diasblerepo=* --enablerepo="rhel-7-server-rpms" && yum update -y \
+ 		&& yum install -y httpd
+
+# build image
+
+
+$ podman build -t *NAME:TAG* DIR
+
+```
