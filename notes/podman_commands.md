@@ -39,21 +39,7 @@ $ sudo podman exec -it mysql-custom /bin/bash
 
 # The exec command starts an additional process inside an already running container
 $ sudo podman exec <container_id> cat/etc/hostname
-<<<<<<< HEAD
 
-#You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
-$ sudo podman exec -l
-
-#Inspect lists metadata about running or stopped container:
-$ sudo podman inspect my-httpd-container
-
-#inspect http container json file and find IPAddress field
-$ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
-
-#stop and kill a running container
-$ sudo podman stop <container_name>
-$ sudo podman kill <container_name> 
-=======
 
 #You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
 $ sudo podman exec -l
@@ -68,9 +54,18 @@ $ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
 $ sudo podman stop <container_name>
 $ sudo podman kill <container_name> 
 
-#You can specify the Unix signal to be sent to the main process. 
-#Podman accepts either the signal name and number
->>>>>>> 4154af4480c4935ef65a8aa64facdc8fb959d4f1
+#You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
+$ sudo podman exec -l
+
+#Inspect lists metadata about running or stopped container:
+$ sudo podman inspect my-httpd-container
+
+#inspect http container json file and find IPAddress field
+$ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
+
+#stop and kill a running container
+$ sudo podman stop <container_name>
+$ sudo podman kill <container_name> 
 
 #You can specify the Unix signal to be sent to the main process. 
 #Podman accepts either the signal name and number
@@ -86,9 +81,8 @@ $ sudo podman rm -a remove all available containers or images
 #Before deleting all containers all running containers must be in a "stopped" status
 $ sudo podman stop -a
 ```
-<<<<<<< HEAD
 
-### Creating Persistent Storage
+#### Creating Persistent Storage
 
 
 1.  Create directory with owner and group root
@@ -126,23 +120,28 @@ registeries listed in the `/etc/containers/registries.conf` configuration file
 
 `$ sudo podman search [options]`	
 
-#manipulting container images
+#### manipulting container images:
 
-
+```bash
 $ sudo podman save [-o FILE_NAME] IMAGE_NAME[:TAG]
 $ sudo podman save -o mysql.tar registry.access.redhat.com/rhscl/mysql-57-rhel7
 $ sudo podman load -I mysql.tar
 $ sudo poems rmi [OPTIONS] IMAGE [IMAGE....]
 $ sudo podman rmi -a #delete all images not currently being used by a container, risky!
-
+```
+*Example usage*
+```bash
 $ sudo podman commit [OPTIONS] CONTAINER \
  	[REPOSITORY[:PORT]/]IMAGE[:TAG]
+```
 
-Options: --author  ""  # Identifies who created the container image .
-	 --message ""  # Includes a commit message to the registry.
-	 --format      # Selects the format for the image.
-		       # Valid options are oci and docker.
-
+- *Options:*
+```bash
+	--author  ""  		# Identifies who created the container image .
+	--message ""  		# Includes a commit message to the registry.
+	--format      		# Selects the format for the image.
+		       			# Valid options are oci and docker.
+```
 $ sudo podman ps
 $ sudo podman diff <image_name>
 
@@ -157,13 +156,3 @@ $ sudo podman
 
 
 
-
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 4154af4480c4935ef65a8aa64facdc8fb959d4f1
-=======
->>>>>>> e7a7bab63cf8a1d4ce24f2382bc1763e2315a7bb
