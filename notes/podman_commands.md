@@ -1,21 +1,21 @@
 
 ### Abstract
 
-Overview of using podman commands
+Overview of using podman commands from basic commands, to managing containers using`podman`.
 
 ```bash
 $ sudo Rodman search rhel                		# search for the rhel image
-$ sudo podman pull <image_name>`                     	# pull an image
-$ sudo podman run  rhel7:7.5 echo "Hello world"` 	# run the rhel image and echo "Hello world"
+$ sudo podman pull <image_name>                     	# pull an image
+$ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
 $ sudo podman ps 					# list running containers
 ```
-*options:*
+- *options:*
 ```bash
--t or --tty 		# meaning (pseudo-terminal) 
-- or --interactive 	# Interactive mode
--d or --detach 		# means the container runs in the background
---name 			# specify the name of the container
--e			# helps specify environment variables
+-t  or   --tty 		        # meaning (pseudo-terminal) 
+-i   or   --interactive 	# Interactive mode
+-d  or   --detach 		    # means the container runs in the background
+--name 			            # specify the name of the container
+-e                          # helps specify environment variables
 ```
 *Example:* 
 ```bash
@@ -23,23 +23,21 @@ $ sudo podman run --name mysql-custom \
 	-e MYSQL_USER=redhat -e MYSQL_PASSWORD=r3dhat \
 	-e MYSQL_DATABASE=items  -e MYSQL_ROOT_PASSWORD=r00tpa55 
 	-d rhscl/mysql-57-rhel:5.7-3.14`
+# Verify containers started without errors
+$ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"\
+#or 
+$ sudo podman ps -a
 
+#  enter the *my-sql-custom* container in interactive mode and
+$ sudo podman exec -it mysql-custom /bin/bash
 #connect to database within container
 $ mysql -uroot
 ```
 
 
 ```bash
-# Verify containers started without errors
-$ sudo Rodman ps --format "{{.ID}} {{.Images}} {{.Names}}"
-$ sudo podman ps -a
-
-#  enter the *my-sql-custom* container in interactive mode and
-$ sudo podman exec -it mysql-custom /bin/bash
-
 # The exec command starts an additional process inside an already running container
 $ sudo podman exec <container_id> cat/etc/hostname
-
 
 #You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
 $ sudo podman exec -l
@@ -84,13 +82,13 @@ $ sudo podman stop -a
 
 #### Creating Persistent Storage
 
-
-1.  Create directory with owner and group root
-2.  grant write access to the directory for MYSQL service which has a UID of 27
-3.  Apply `container_file_t` context to the directory(all all subdirectories) to allow containers access to all of its contents
-4.  Apply SELinux container policy
-5.  Mount volume within container
-6.  confirm policy was applied
+*steps:*
+- Create directory with owner and group root
+- grant write access to the directory for MYSQL service which has a UID of 27
+- Apply `container_file_t` context to the directory(all all subdirectories) to allow containers access to all of its contents
+- Apply SELinux container policy
+- Mount volume within container
+- confirm policy was applied
 ```bash
 $ sudo mkdir -pv /var/dbfiles
 $ sudo chown -Rv 27:27 /var/dbfiles
