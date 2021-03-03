@@ -148,7 +148,9 @@ $ sudo podman images
 >> REPOSITORY  			      TAG					IMAGE ID
 localhost/<image_name>		latest       		dhsh459dk
 ```
+- You can then `run` containers based on these images or `commit` them to a registry.
 
+Done!
 
 
 
