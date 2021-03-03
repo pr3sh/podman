@@ -105,8 +105,63 @@ ADD http:domain.com/file.pdf /var/www/html
 
 # build image based on Dockerfile instructions
 $ sudo podman build -t NAME:TAG DIR
-
 ```
+
+-*End-to-end example:*
+```bash
+
+$ mkdir /docker-practice/Dockerfile
+$ vim  /docker-practice/Dockerfile  
+```
+- Once you have opened the `Dockerfile` you can write your commmands to be executed.
+```bash
+#Dockerfile 
+FROM ubi7/ubi:7.4
+
+MAINTAINER your nme <your_email>
+
+ENV PORT 8188
+
+RUN yum install -y httpd && yum clean all
+
+#replace Listen 80 in httpd.conf file to our specified port
+RUN sed -ri ie "/^/Listen 80/c\Listen ${PORT}" /etc/httpd/conf/httpd.conf && \
+	chown -R apache:apache /etc/httpd/logs/ &&  \
+	chwon -R apache:apache /run/httpd/
+
+USER apache
+EXPOSE ${PORT}
+
+#Copy files in the src folder to Apache doc root
+COPY ./src/ /var/www/html/
+
+#start apache in the foreground
+CMD ["httpd","-D","FOREGROUND"]
+
+# after you close and save file, build image based on Dockerfile.
+
+$ sudo podman build --layers=false \
+	-t <image_name> <directory_of_docker_file>
+
+# verify custom image was built successfully.
+$ sudo podman images
+>> REPOSITRY  			       TAG			IMAGE ID
+localhost/<image_name>         latest       dhsh459dk
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
