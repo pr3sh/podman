@@ -146,7 +146,7 @@ $ sudo podman build --layers=false \
 # verify custom image was built successfully.
 $ sudo podman images
 >> REPOSITORY  			      TAG					IMAGE ID
-localhost/<image_name>	latest       		dhsh459dk
+localhost/<image_name>		latest       		dhsh459dk
 ```
 
 
