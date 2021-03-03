@@ -36,7 +36,66 @@ CMD ["-D","FOREGROUND"]
 - `MAINTAINER` indicates the Author field of the generated container image\'s metadata.
 - `RUN` executes commands in a new layer on top of the current image.The shell used to execute command is /bin/bash
 - `EXPOSE` indicates that the container listens on a specified network port at runtime.
-- `ENTRYPOINT` defines both the command to be enxecuted and the parameters
+- `ENTRYPOINT` defines both the command to be executed and the parameters.
+- `ENV` is responsible for defining environment variables.
+- `ADD` instruction copies files or folders from local or remote source and adds them to the container file system.
+- `COPY` copies files from the working directory and adds them to the contianers file system.
+- `CMD` provides the defult arguments for the `ENTRYPOINT` instruction.
+- `USER` specifies the username or the `UID` to use when running the contianer image for the `RUN`,`CMD`,& `ENTRYPOINT` instructions.
+
+*It is good to define a different user other than root for security reasons.*
+
+### `CMD` and `ENTRYPOINT`
+
+There are two formats for these commands.
+- *Exec form*, which uses a `JSON` array:
+```bash
+ENTRYPOINT ["command","param1","param2"]
+CMD ["param1","param2"]
+```
+- *Shell form*:
+```bash
+ENTRYPOINT "command","param1","param2"
+CMD "param1","param2"
+
+# Exec form is the preffered form
+# Docker file should contain at most one ENTRYPOINT and one CMD instruction.
+# if more than one of each is present, then only last instruction takes effect.
+```
+*Example usage of `ENTRYPOINT` and `CMD`:*
+
+```bash
+ENTRYPOINT ["/bin/date"]
+CMD ["+%H:%M"]
+# run the image that was build with these params
+$ sudo podman run it <image_name> 
+>> 10:50 am
+#modify command
+$ sudo podman run it <image_name>  +%A
+>> Tuesday
+
+#define both entry point and command to be executed
+ENTRYPOINT ["/bin/date","+%H:%M"]
+```
+### `ADD` and `COPY`
+*Different forms:*
+```bash
+#Shell
+ADD  <source> ...<destination>
+COPY <source> .... <destination>
+
+#Exec form
+ADD  ["<source>" ....."<destination>"]
+COPY ["<source>" .... "<destination>"]
+
+
+#You can also specify a URL resource
+ADD http:domain.com/file.pdf /var/www/html 
+```
+- *If the source is a file system path, it must be inside the working directory.*
+- *If the file is compressed, then add the decompression command to the destination directory.*
+
+
 
 *Example usage for best practices when running successsive commands.*
 
@@ -44,9 +103,11 @@ CMD ["-D","FOREGROUND"]
  RUN yum --diasblerepo=* --enablerepo="rhel-7-server-rpms" && yum update -y \
  		&& yum install -y httpd
 
-# build image
-
-
-$ podman build -t *NAME:TAG* DIR
+# build image based on Dockerfile instructions
+$ sudo podman build -t NAME:TAG DIR
 
 ```
+
+
+
+
