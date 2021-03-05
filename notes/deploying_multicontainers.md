@@ -7,14 +7,11 @@ The objective of this guy is to cover deployments of multicontainer applications
 
 
 
-### A typical top-level directory layout
-
+### Directory layout for **`my-sql`** build
     .
-    ├── Dockerfile                   # Compiled files (alternatively `dist`)
-    ├── docs                    # Documentation files (alternatively `doc`)
-    ├── src                     # Source files (alternatively `lib` or `app`)
-    ├── test                    # Automated tests (alternatively `spec` or `tests`)
-    ├── root                     # Tools and utilities
+    ├── Dockerfile                                                      
+    ├── training.repo                    
+    ├── root                    
     └── README.md
 
 - High-level steps of building a multi-container application which is based on **`node.js`** front-end , **`REST`** backend, and **`my-sql`** database for storage.
