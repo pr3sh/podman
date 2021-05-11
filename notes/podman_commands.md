@@ -1,13 +1,13 @@
 
-### Abstract
+## Abstract
 
-# **Kubernetes and OpenShift**
+## **Kubernetes and OpenShift**
 
 -  **Table of contents**:
 	- [Fetching Container Images](#fetching-container-images)
 	- [Running Containers](#running-containers)
 		
-### **Fetching Container Images**
+#### **Fetching Container Images**
 
 search for an image
 ```zsh
@@ -17,11 +17,11 @@ Pull an image
 ```zsh
 $ sudo podman pull <image_name>                     	
 ```
+List current images
 ```zsh
 $ sudo podman images
-``
-$ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
-$ sudo podman ps 					# list running containers
+```
+
 ```
 - *options:*
 ```bash
@@ -32,7 +32,17 @@ $ sudo podman ps 					# list running containers
 -e                          # helps specify environment variables
 ```
 
-### **Running Containers**
+#### **Running Containers**
+
+To run containers, you invoke the **`sudo podman run`** command.
+```zsh
+$ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
+```
+List running containers
+```zsh
+$ sudo podman ps 					
+```
+
 *Example:* 
 ```bash
 $ sudo podman run --name mysql-custom \
