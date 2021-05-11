@@ -5,6 +5,8 @@
 	- [Fetching Container Images](#fetching-container-images)
 	- [Running Containers](#running-containers)
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
+		- [Example](#example)
+	- [Manipulating Container Images](#manipulating-container-images)
 		
 #### **Fetching Container Images:**
 
@@ -34,12 +36,12 @@ $ sudo podman ps
 | **`--name`**                    | specify the name of the container          |
 | **`-e`**                        | helps specify environment variables        |    
 
-*Example:* 
+##### Example:
 ```bash
 $ sudo podman run --name mysql-custom \
 	-e MYSQL_USER=redhat -e MYSQL_PASSWORD=r3dhat \
 	-e MYSQL_DATABASE=items  -e MYSQL_ROOT_PASSWORD=r00tpa55 
-	-d rhscl/mysql-57-rhel:5.7-3.14`
+	-d rhscl/mysql-57-rhel7:5.7-3.14`
 # Verify containers started without errors
 $ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"\
 #or 
