@@ -3,9 +3,14 @@
 
 Overview of using podman commands from basic commands, to managing containers using`podman`.
 
+search for an image
 ```bash
-$ sudo Rodman search rhel                		# search for the rhel image
-$ sudo podman pull <image_name>                     	# pull an image
+$ sudo Rodman search rhel                	
+```
+Pull an image
+```
+$ sudo podman pull <image_name>                     	
+```
 $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
 $ sudo podman ps 					# list running containers
 ```
