@@ -7,6 +7,7 @@
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
 		- [Example](#example)
 	- [Manipulating Container Images](#manipulating-container-images)
+	- [Managing Container Images](#managing-container-images)
 		
 #### **Fetching Container Images:**
 
@@ -21,14 +22,6 @@ $ sudo podman images #List current images
 To run containers, you invoke the **`sudo podman run`** command.
 ```zsh
 $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
-
-$ sudo podman ps  #list running contianers
-
-$ sudo podman ps -a #show stopped containers	
-
-$ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"	# Verify containers started without errors	
-
-$ sudo podman exec -it <image name> <command> #enter a container in interactive mode
 ```
 #### **Useful Podman CLI Options:**
 
@@ -40,7 +33,7 @@ $ sudo podman exec -it <image name> <command> #enter a container in interactive 
 | **`--name`**                    | specify the name of the container          |
 | **`-e`**                        | helps specify environment variables        |    
 
-##### Example:
+#### Example:
 ```bash
 $ sudo podman run --name mysql-custom \
 	-e MYSQL_USER=redhat -e MYSQL_PASSWORD=r3dhat \
@@ -52,38 +45,34 @@ $ sudo podman exec -it mysql-custom /bin/bash
 #connect to database within container
 $ mysql -uroot
 ```
-
-
+#### **Managing Container Images:**
 ```bash
-# The exec command starts an additional process inside an already running container
+#list running contianers
+$ sudo podman ps  
+#show stopped containers	
+$ sudo podman ps -a 
+# Verify containers started without errors	
+$ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"	
+
+#The exec command starts an additional process inside an already running container
 $ sudo podman exec <container_id> cat/etc/hostname
-
+#Executing additional processes within a container in interactive mode
+$ sudo podman exec -it <image name> <command> 
 #You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
 $ sudo podman exec -l
 
 #Inspect lists metadata about running or stopped container:
 $ sudo podman inspect my-httpd-container
-
 #inspect http container json file and find IPAddress field
 $ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
 
 #stop and kill a running container
 $ sudo podman stop <container_name>
+#Before deleting all containers all running containers must be in a "stopped" status
+$ sudo podman stop -a
+
+#More aggresive way of stopping container process.
 $ sudo podman kill <container_name> 
-
-#You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
-$ sudo podman exec -l
-
-#Inspect lists metadata about running or stopped container:
-$ sudo podman inspect my-httpd-container
-
-#inspect http container json file and find IPAddress field
-$ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
-
-#stop and kill a running container
-$ sudo podman stop <container_name>
-$ sudo podman kill <container_name> 
-
 #You can specify the Unix signal to be sent to the main process. 
 #Podman accepts either the signal name and number
 $ sudo podman kill -s SIGKILL <container_name>
@@ -91,12 +80,11 @@ $ sudo podman kill -s SIGKILL <container_name>
 # Restart a stopped container
 $ sudo podman restart <container_name>
 
-# deletes a container nd discordes its state and file system
+# deletes a container and discordes its state and file system
 $ sudo podman rm <container_name>
-$ sudo podman rm -a remove all available containers or images
+#remove all available containers or images
+$ sudo podman rm -a 
 
-#Before deleting all containers all running containers must be in a "stopped" status
-$ sudo podman stop -a
 ```
 
 #### Creating Persistent Storage
