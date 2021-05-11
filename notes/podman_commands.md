@@ -97,6 +97,13 @@ $ sudo podman rm -a
 
 #### Creating Persistent Storage
 
+Container storage is said to be ephemeral, meaning its contents are not preserved after the container is removed. Containerized applications work on the assumption that they always start with empty storage, and this makes creating and destroying containers relatively inexpensive operations.
+
+
+A running container gets a new layer over its base container image, and this layer is the container storage. At first, this layer is the only read/write storage available for the container, and it is used to create working files, temporary files, and log files. Those files are considered volatile. An application does not stop working if they are lost. The container storage layer is exclusive to the running container, so if another container is created from the same base image, it gets another read/write layer. This ensures the each container's resources are isolated from other similar containers.
+
+Ephemeral container storage is not sufficient for applications that need to keep data over restarts, such as databases. To support such applications, the administrator must provide a container with persistent storage.
+
 *steps:*
 - Create directory with owner and group root
 - grant write access to the directory for MYSQL service which has a UID of 27
