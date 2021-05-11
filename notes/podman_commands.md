@@ -4,7 +4,7 @@
 -  **Table of contents**:
 	- [Fetching Container Images](#fetching-container-images)
 	- [Running Containers](#running-containers)
-		- [Useful Commandline Options](#useful-commandline-options)
+		- [Useful Podman Options](#useful-commandline-options)
 		
 #### **Fetching Container Images:**
 
@@ -25,15 +25,14 @@ List running containers
 $ sudo podman ps 					
 ```
 #### **Useful Commandline Options:**
-```
-- *options:*
-```bash
--t  or   --tty 		        # meaning (pseudo-terminal) 
--i   or   --interactive 	# Interactive mode
--d  or   --detach 		    # means the container runs in the background
---name 			            # specify the name of the container
--e                          # helps specify environment variables
-```
+
+| Options             |     Meaning                                | 
+| --------------------|:----------------------------------------- :|  
+| -t or --tty         | pseudo-terminal                            | 
+| -i or --interactive | Interactive mode                           |   
+| -d or --detach      | means the container runs in the background |
+| --name              | specify the name of the container          |
+| -e                  | helps specify environment variables        |    
 
 *Example:* 
 ```bash
