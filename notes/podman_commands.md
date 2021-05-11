@@ -46,6 +46,7 @@ $ sudo podman exec -it mysql-custom /bin/bash
 $ mysql -uroot
 ```
 #### **Managing Container Images:**
+- Listing containers
 ```zsh
 #list running contianers
 $ sudo podman ps  
@@ -54,6 +55,7 @@ $ sudo podman ps -a
 # Verify containers started without errors	
 $ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"	
 ```
+- Executing processes within a container
 ```zsh
 #The exec command starts an additional process inside an already running container
 $ sudo podman exec <container_id> cat/etc/hostname
