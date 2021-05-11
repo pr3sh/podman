@@ -21,10 +21,14 @@ $ sudo podman images #List current images
 To run containers, you invoke the **`sudo podman run`** command.
 ```zsh
 $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
-```
-List running containers
-```zsh
-$ sudo podman ps 					
+
+$ sudo podman ps  #list running contianers
+
+$ sudo podman ps -a #show stopped containers	
+
+$ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"	# Verify containers started without errors	
+
+$ sudo podman exec -it <image name> <command> #enter a container in interactive mode
 ```
 #### **Useful Podman CLI Options:**
 
@@ -41,13 +45,9 @@ $ sudo podman ps
 $ sudo podman run --name mysql-custom \
 	-e MYSQL_USER=redhat -e MYSQL_PASSWORD=r3dhat \
 	-e MYSQL_DATABASE=items  -e MYSQL_ROOT_PASSWORD=r00tpa55 
-	-d rhscl/mysql-57-rhel7:5.7-3.14`
-# Verify containers started without errors
-$ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"\
-#or 
-$ sudo podman ps -a
+	-d rhscl/mysql-57-rhel7:5.7-3.14
 
-#  enter the *my-sql-custom* container in interactive mode and
+# enter the *my-sql-custom* container in interactive mode and
 $ sudo podman exec -it mysql-custom /bin/bash
 #connect to database within container
 $ mysql -uroot
