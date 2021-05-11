@@ -1,7 +1,7 @@
 
-## Abstract
+## **`Abstract`**
 
--  **Table of contents**:
+-  **`Table of contents`:**
 	- [Fetching Container Images](#fetching-container-images)
 	- [Running Containers](#running-containers)
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
@@ -9,7 +9,7 @@
 	- [Manipulating Container Images](#manipulating-container-images)
 	- [Managing Container Images](#managing-container-images)
 		
-#### **Fetching Container Images:**
+#### **`Fetching Container Images:`**
 
 search for an image
 ```zsh
@@ -23,7 +23,7 @@ To run containers, you invoke the **`sudo podman run`** command.
 ```zsh
 $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
 ```
-#### **Useful Podman CLI Options:**
+#### **`Useful Podman CLI Options:`**
 
 |         **Options**             |     **Meaning**                            | 
 |---------------------------------|:------------------------------------------:|  
@@ -45,7 +45,7 @@ $ sudo podman exec -it mysql-custom /bin/bash
 #connect to database within container
 $ mysql -uroot
 ```
-#### **Managing Container Images:**
+#### **`Managing Container Images:`**
 - Listing containers
 ```zsh
 #list running contianers
@@ -55,7 +55,7 @@ $ sudo podman ps -a
 # Verify containers started without errors	
 $ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"	
 ```
-- Executing processes within a container
+> Executing processes within a container
 ```zsh
 #The exec command starts an additional process inside an already running container
 $ sudo podman exec <container_id> cat/etc/hostname
@@ -64,7 +64,7 @@ $ sudo podman exec -it <image name> <command>
 #You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
 $ sudo podman exec -l
 ```
-- Inspect lists metadata about running or stopped containers. The command produces **`JSON`** output.
+> Inspect lists metadata about running or stopped containers. The command produces **`JSON`** output.
 ```zsh
 #Inspect lists metadata about running or stopped container:
 $ sudo podman inspect my-httpd-container
