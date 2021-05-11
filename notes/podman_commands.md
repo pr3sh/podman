@@ -26,13 +26,13 @@ $ sudo podman ps
 ```
 #### **Useful Commandline Options:**
 
-| Options             |     Meaning                                | 
-|---------------------|:------------------------------------------:|  
-| -t or --tty         | pseudo-terminal                            | 
-| -i or --interactive | Interactive mode                           |   
-| -d or --detach      | means the container runs in the background |
-| --name              | specify the name of the container          |
-| -e                  | helps specify environment variables        |    
+|         **Options**             |     **Meaning**                            | 
+|---------------------------------|:------------------------------------------:|  
+| **`-t`** or **`--tty`**         | pseudo-terminal                            | 
+| **`-i`** or **`--interactive`** | Interactive mode                           |   
+| **`-d`** or **`--detach`**      | means the container runs in the background |
+| **`--name`**                    | specify the name of the container          |
+| **`-e`**                        | helps specify environment variables        |    
 
 *Example:* 
 ```bash
