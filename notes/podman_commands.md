@@ -1,16 +1,25 @@
 
 ### Abstract
 
-Overview of using podman commands from basic commands, to managing containers using`podman`.
+# **Kubernetes and OpenShift**
+
+-  **Table of contents**:
+	- [Fetching Container Images](#fetching-container-images)
+	- [Running Containers](#running-containers)
+		
+### **Fetching Container Images**
 
 search for an image
-```bash
-$ sudo Rodman search rhel                	
+```zsh
+$ sudo podman search rhel                	
 ```
 Pull an image
-```
+```zsh
 $ sudo podman pull <image_name>                     	
 ```
+```zsh
+$ sudo podman images
+``
 $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "Hello world"
 $ sudo podman ps 					# list running containers
 ```
@@ -22,6 +31,8 @@ $ sudo podman ps 					# list running containers
 --name 			            # specify the name of the container
 -e                          # helps specify environment variables
 ```
+
+### **Running Containers**
 *Example:* 
 ```bash
 $ sudo podman run --name mysql-custom \
