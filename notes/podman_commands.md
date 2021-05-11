@@ -46,26 +46,29 @@ $ sudo podman exec -it mysql-custom /bin/bash
 $ mysql -uroot
 ```
 #### **Managing Container Images:**
-```bash
+```zsh
 #list running contianers
 $ sudo podman ps  
 #show stopped containers	
 $ sudo podman ps -a 
 # Verify containers started without errors	
 $ sudo podman ps --format "{{.ID}} {{.Images}} {{.Names}}"	
-
+```
+```zsh
 #The exec command starts an additional process inside an already running container
 $ sudo podman exec <container_id> cat/etc/hostname
 #Executing additional processes within a container in interactive mode
 $ sudo podman exec -it <image name> <command> 
 #You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
 $ sudo podman exec -l
-
+```
+```zsh
 #Inspect lists metadata about running or stopped container:
 $ sudo podman inspect my-httpd-container
 #inspect http container json file and find IPAddress field
 $ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
-
+```
+```zsh
 #stop and kill a running container
 $ sudo podman stop <container_name>
 #Before deleting all containers all running containers must be in a "stopped" status
@@ -76,7 +79,8 @@ $ sudo podman kill <container_name>
 #You can specify the Unix signal to be sent to the main process. 
 #Podman accepts either the signal name and number
 $ sudo podman kill -s SIGKILL <container_name>
-
+```
+```zsh
 # Restart a stopped container
 $ sudo podman restart <container_name>
 
@@ -84,9 +88,7 @@ $ sudo podman restart <container_name>
 $ sudo podman rm <container_name>
 #remove all available containers or images
 $ sudo podman rm -a 
-
 ```
-
 #### Creating Persistent Storage
 
 *steps:*
