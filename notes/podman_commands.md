@@ -64,12 +64,14 @@ $ sudo podman exec -it <image name> <command>
 #You can skip writing container ID or name in later Podman commands by replace container ID with `-l` option:
 $ sudo podman exec -l
 ```
+- Inspect lists metadata about running or stopped containers. The command produces **`JSON`** output.
 ```zsh
 #Inspect lists metadata about running or stopped container:
 $ sudo podman inspect my-httpd-container
 #inspect http container json file and find IPAddress field
 $ sudo podman inspect -f '{{.NetworkSettings.IPAddress}}' my-httpd-container
 ```
+- Stop or Kill running contianers
 ```zsh
 #stop and kill a running container
 $ sudo podman stop <container_name>
@@ -82,6 +84,7 @@ $ sudo podman kill <container_name>
 #Podman accepts either the signal name and number
 $ sudo podman kill -s SIGKILL <container_name>
 ```
+- Restart and remove containers
 ```zsh
 # Restart a stopped container
 $ sudo podman restart <container_name>
@@ -91,6 +94,7 @@ $ sudo podman rm <container_name>
 #remove all available containers or images
 $ sudo podman rm -a 
 ```
+
 #### Creating Persistent Storage
 
 *steps:*
@@ -100,6 +104,7 @@ $ sudo podman rm -a
 - Apply SELinux container policy
 - Mount volume within container
 - confirm policy was applied
+
 ```bash
 $ sudo mkdir -pv /var/dbfiles
 $ sudo chown -Rv 27:27 /var/dbfiles
