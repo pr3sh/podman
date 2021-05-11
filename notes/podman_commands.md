@@ -4,7 +4,7 @@
 -  **Table of contents**:
 	- [Fetching Container Images](#fetching-container-images)
 	- [Running Containers](#running-containers)
-		- [Useful Podman Options](#useful-commandline-options)
+		- [Useful Podman CLI Options](#useful-podman-cli-options)
 		
 #### **Fetching Container Images:**
 
@@ -24,7 +24,7 @@ List running containers
 ```zsh
 $ sudo podman ps 					
 ```
-#### **Useful Commandline Options:**
+#### **Useful Podman CLI Options:**
 
 |         **Options**             |     **Meaning**                            | 
 |---------------------------------|:------------------------------------------:|  
