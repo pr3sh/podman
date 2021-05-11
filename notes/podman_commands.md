@@ -27,7 +27,7 @@ $ sudo podman ps
 #### **Useful Commandline Options:**
 
 | Options             |     Meaning                                | 
-| --------------------|:----------------------------------------- :|  
+|---------------------|:------------------------------------------:|  
 | -t or --tty         | pseudo-terminal                            | 
 | -i or --interactive | Interactive mode                           |   
 | -d or --detach      | means the container runs in the background |
