@@ -1,37 +1,19 @@
 
 ## Abstract
 
-## **Kubernetes and OpenShift**
-
 -  **Table of contents**:
 	- [Fetching Container Images](#fetching-container-images)
 	- [Running Containers](#running-containers)
+		- [Useful Commandline Options](#useful-commandline-options)
 		
-#### **Fetching Container Images**
+#### **Fetching Container Images:**
 
 search for an image
 ```zsh
 $ sudo podman search rhel                	
+$ sudo podman pull <image_name> #Pull an image                    	
+$ sudo podman images #List current images
 ```
-Pull an image
-```zsh
-$ sudo podman pull <image_name>                     	
-```
-List current images
-```zsh
-$ sudo podman images
-```
-
-```
-- *options:*
-```bash
--t  or   --tty 		        # meaning (pseudo-terminal) 
--i   or   --interactive 	# Interactive mode
--d  or   --detach 		    # means the container runs in the background
---name 			            # specify the name of the container
--e                          # helps specify environment variables
-```
-
 #### **Running Containers**
 
 To run containers, you invoke the **`sudo podman run`** command.
@@ -41,6 +23,16 @@ $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "
 List running containers
 ```zsh
 $ sudo podman ps 					
+```
+#### **Useful Commandline Options:**
+```
+- *options:*
+```bash
+-t  or   --tty 		        # meaning (pseudo-terminal) 
+-i   or   --interactive 	# Interactive mode
+-d  or   --detach 		    # means the container runs in the background
+--name 			            # specify the name of the container
+-e                          # helps specify environment variables
 ```
 
 *Example:* 
