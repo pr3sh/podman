@@ -98,14 +98,10 @@ $ sudo podman rm -a
 ```
 
 #### **`Creating Persistent Storage:`**
+Container storage is said to be ephemeral, meaning its contents are not preserved after the container is removed. Containerized applications work on the assumption that they always start with empty storage, and this makes creating and destroying containers relatively inexpensive operations. Ephemeral container storage is not sufficient for applications that need to keep data over restarts, such as databases. To support such applications, the administrator must provide a container with persistent storage.
 
-- Container storage is said to be ephemeral, meaning its contents are not preserved after the container is removed. Containerized applications work on the assumption that they always start with empty storage, and this makes creating and destroying containers relatively inexpensive operations.
--  Ephemeral container storage is not sufficient for applications that need to keep data over restarts, such as databases. To support such applications, the administrator must provide a container with persistent storage.
+> *High level steps for creating persistent storage:*
 
-> *High level steps for creating persistent storage*
-
-- Apply `container_file_t` context to the directory(all all subdirectories) to allow containers access to all of its contents
-- Apply SELinux container policy
 - confirm policy was applied
 - Mount volume within container
 
@@ -117,8 +113,14 @@ $ sudo mkdir -pv /var/dbfiles
 ```zsh
 $ sudo chown -Rv 27:27 /var/dbfiles
 ```
+> Apply `container_file_t` context to the directory(all all subdirectories) to allow containers access to all of its contents.
+```zsh
 $ sudo semanage fcontext -a -t container_file_t 'var/dbfiles(/.*)?'
+```
+> Apply SELinux container policy
+```zsh
 $ sudo restorecon -R /var/dbfiles/
+```
 $ ls -dZ /var/dbfiles
 $ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 ```
