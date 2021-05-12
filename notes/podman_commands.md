@@ -7,8 +7,9 @@
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
 		- [Example](#example)
 	- [Managing Container Images](#managing-container-images)	
-	- [Manipulating Container Images](#manipulating-container-images)
 	- [Creating Persistent Storage](#creating-persistent-storage)
+	- [Manipulating Container Images](#manipulating-container-images)
+	- [Accessing Containers](#accessing-containers)
 		
 
 #### **`Fetching Container Images:`**
@@ -124,6 +125,13 @@ $ ls -dZ /var/dbfiles
 ```zsh
 $ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 ```
+
+
+
+
+
+
+
 ```zsh
 #accessing container*
 $ sudo podman run -d --name apache4 -p 80 httpd:2.4
