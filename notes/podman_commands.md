@@ -180,13 +180,14 @@ registeries listed in the **`/etc/containers/registries.conf`** configuration fi
 **sudo podman search [OPTIONS] <term>**	
 #### **`Useful Search CLI Options:`**
 
-|         **Options**             |     **Description**                                                | 
-|---------------------------------|:------------------------------------------------------------------:|  
-| **`--limit <number>`**          | Limits the number of listed images per registry.                   | 
-| **`--filter <filter=value>`**   | Filter output based on conditions provided. Supported filters are \n **hi** |   
-| **`-d`** or **`--detach`**      | means the container runs in the background                         |
-| **`--name`**                    | specify the name of the container                                  |
-| **`-e`**                        | helps specify environment variables                                |    
+|         **Options**             |     **Description**                                                            | 
+|---------------------------------|:------------------------------------------------------------------------------:|  
+| **`--limit <number>`**          | Limits the number of listed images per registry.                               | 
+| **`--filter <filter=value>`**   | Filter output based on conditions provided. Supported filters are              |
+|                                 | **`stars=<number>`** Show only images with at least this number of stars.      |
+|                                 | **`is-automated=<true|false>`** Show only images automatically built.          |
+|                                 | **`is-official=<true|false>`** Show only images flagged as official.           |
+| **`--tls-verify <true|false>`** | Enables or disables **`HTTPS`** certificate validation for all used registries.|    
 
 
 ```zsh
