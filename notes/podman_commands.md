@@ -8,12 +8,12 @@
 		- [Example](#example)
 	- [Managing Containers](#managing-containers)	
 	- [Creating Persistent Storage](#creating-persistent-storage)
-	- [Manipulating Container Images](#manipulating-container-images)
 	- [Accessing Containers](#accessing-containers)
 		- [Mapping Network Ports](#mapping-network-ports)
 	- [Managing Container Images](#managing-container-images)
 		- [Useful Search CLI Options](#useful-search-cli-options)
 		- [Registry Authentication](#registry-authentication)
+	- [Manipulating Container Images](#manipulating-container-images)
 		
 
 #### **`Fetching Container Images:`**
@@ -201,11 +201,11 @@ $ sudo podman login -u username \
 	-p password registry.access.redhat.com
 ```
 >> *Login Succeeded!*
-```
+
 #### **`Pulling Images:`**
 To pull container images from a registry, use the **`podman pull`** command:
-> *Example Format*
 
+> *Example Format*
 ```zsh
 $ sudo podman pull [OPTIONS] [REGISTRY[:PORT]/]NAME[:TAG] #generic format
 $ sudo podman pull quay.io/bitnami/nginx #Pull from Quay registry
