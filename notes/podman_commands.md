@@ -194,7 +194,25 @@ registeries listed in the **`/etc/containers/registries.conf`** configuration fi
 | **`--tls-verify=<true>`** or **`false>`** | Enables or disables **`HTTPS`** certificate validation for all used registries.|    
 
 #### **`Registry Authentication: `**
+> Some container image registries require access authorization.
+> The **`podman login`** command allows username and password authentication to a registry as shown below.
+```zsh
+$ sudo podman login -u username \
+	-p password registry.access.redhat.com
+>> Login Succeeded!
+```
+#### **`Pulling Images:`**
+To pull container images from a registry, use the **`podman pull`** command:
+> *Example Format*
 
+```zsh
+$ sudo podman pull [OPTIONS] [REGISTRY[:PORT]/]NAME[:TAG] #generic format
+$ sudo podman pull quay.io/bitnami/nginx #Pull from Quay registry
+```
+> *List all container images stored locally.*
+```zsh
+sudo podman images
+```
 ```zsh
 # Save and image to file called *mysql.tar*, based on the RHEL image.
 $ sudo podman save [-o FILE_NAME] IMAGE_NAME[:TAG]
