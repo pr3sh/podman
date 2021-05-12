@@ -183,9 +183,7 @@ registeries listed in the **`/etc/containers/registries.conf`** configuration fi
 |         **Options**             |     **Description**                                                | 
 |---------------------------------|:------------------------------------------------------------------:|  
 | **`--limit <number>`**          | Limits the number of listed images per registry.                   | 
-| **`--filter <filter=value>`**   | Filter output based on conditions provided. Supported filters are:
-|								
-|:-------------------------------:|:------------------------------------------------------------------:|
+| **`--filter <filter=value>`**   | Filter output based on conditions provided. Supported filters are \n **hi** |   
 | **`-d`** or **`--detach`**      | means the container runs in the background                         |
 | **`--name`**                    | specify the name of the container                                  |
 | **`-e`**                        | helps specify environment variables                                |    
