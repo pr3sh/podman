@@ -99,32 +99,31 @@ $ sudo podman rm -a
 
 #### **`Creating Persistent Storage:`**
 Container storage is said to be ephemeral, meaning its contents are not preserved after the container is removed. Containerized applications work on the assumption that they always start with empty storage, and this makes creating and destroying containers relatively inexpensive operations. Ephemeral container storage is not sufficient for applications that need to keep data over restarts, such as databases. To support such applications, the administrator must provide a container with persistent storage.
-
 > *High level steps for creating persistent storage:*
-
-- confirm policy was applied
-- Mount volume within container
-
-> Create directory with owner and group root
+> Create directory with owner and group root.
 ```zsh
 $ sudo mkdir -pv /var/dbfiles
 ```
-> Grant write access to the directory for MYSQL service which has a UID of 27
+> Grant write access to the directory for MYSQL service which has a UID of 27.
 ```zsh
 $ sudo chown -Rv 27:27 /var/dbfiles
 ```
-> Apply `container_file_t` context to the directory(all all subdirectories) to allow containers access to all of its contents.
+> Apply **`container_file_t`** context to the directory(all all subdirectories) to allow containers access to all of its contents.
 ```zsh
 $ sudo semanage fcontext -a -t container_file_t 'var/dbfiles(/.*)?'
 ```
-> Apply SELinux container policy
+> Apply **`SELinux`** container policy.
 ```zsh
 $ sudo restorecon -R /var/dbfiles/
 ```
+> Confirm policy was applied.
+```zsh
 $ ls -dZ /var/dbfiles
+```
+> Mount volume from container to host machine. In order to do so, you have to specify the **`-v`** option.
+```zsh
 $ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 ```
-
 ```zsh
 #accessing container*
 $ sudo podman run -d --name apache4 -p 80 httpd:2.4
