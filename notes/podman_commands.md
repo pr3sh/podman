@@ -199,7 +199,8 @@ registeries listed in the **`/etc/containers/registries.conf`** configuration fi
 ```zsh
 $ sudo podman login -u username \
 	-p password registry.access.redhat.com
->> Login Succeeded!
+```
+>> *Login Succeeded!*
 ```
 #### **`Pulling Images:`**
 To pull container images from a registry, use the **`podman pull`** command:
