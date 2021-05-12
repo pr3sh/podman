@@ -159,6 +159,7 @@ $ curl 127.0.0.1:35134
 ```zsh
 $ sudo podman run -d --name apache4 -p 80 rhscl/httpd-24-rhel7:2.4
 $ sudo podman port apache4
+>> 80/tcp -> 0.0.0.0:37068
 ```
 #### **`Example`:***
 
