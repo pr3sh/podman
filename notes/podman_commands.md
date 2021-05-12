@@ -162,20 +162,22 @@ $ sudo podman run -d --name apache4 -p 80 rhscl/httpd-24-rhel7:2.4
 $ sudo podman port apache4
 >> 80/tcp -> 0.0.0.0:37068
 ```
-#### **`Example`:***
-
-```zsh
-$ sudo podman run --name mysqldb-port -e MYSQL_USER=user -e MYSQL_PASSWORD=mypa55 \
-	-e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -p 13306:3306 -d  \
-	-v /var/local/mysql:/var/lib/mysql/data rascal/mysql-57-rhel7 
-```
-
-
 
 #### **`Managing Container Images :`**
-
-Podman search command finds images by image name, user name., or description from all
+- To configure registries for the podman command, you need to update the **`/etc/containers/registries.conf`** file. 
+- Edit the registries entry in the **`[registries.search]`** section, adding an entry to the values list as show below.
+```zsh
+[registries.search]
+registries = ["registry.access.redhat.com", "quay.io"]
+```
+- Secure connections to a registry require a trusted certificate. To support insecure connections, add the commands below in the same file.
+```zsh
+[registries.insecure]
+registries = ['localhost:5000']
+```
+- Podman search command finds images by image name, user name., or description from all
 registeries listed in the **`/etc/containers/registries.conf`** configuration file. 
+
 > *Example Usage*
 **sudo podman search [OPTIONS] <term>**	
 #### **`Useful Search CLI Options:`**
