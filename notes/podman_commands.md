@@ -10,7 +10,7 @@
 	- [Creating Persistent Storage](#creating-persistent-storage)
 	- [Manipulating Container Images](#manipulating-container-images)
 	- [Accessing Containers](#accessing-containers)
-		- [Software Defined Networks](#software-defined-networks)
+		- [Mapping Network Ports](#mapping-network-ports)
 		
 
 #### **`Fetching Container Images:`**
@@ -127,11 +127,13 @@ $ ls -dZ /var/dbfiles
 $ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 ```
 
+#### **`Accessing Containers: `**
+	- Containers created with Podman running on different hosts belong to different software-defined networks. 
+	- Each SDN is isolated, which prevents a container in one network from communicating with a container in a different network. 
+	- Because of network isolation, a container in one SDN can have the same IP address as a container in a different SDN.
+> *It is also important to note that, by default, all container networks are hidden from the host network. That is, containers typically can access the host network, but without explicit configuration, there is no access back into the container network.*
 
-
-
-
-
+##### **`Mapping Network Ports: `**
 
 ```zsh
 #accessing container*
