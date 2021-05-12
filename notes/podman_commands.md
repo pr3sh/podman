@@ -6,9 +6,11 @@
 	- [Running Containers](#running-containers)
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
 		- [Example](#example)
+	- [Managing Container Images](#managing-container-images)	
 	- [Manipulating Container Images](#manipulating-container-images)
-	- [Managing Container Images](#managing-container-images)
+	- [Creating Persistent Storage](#creating-persistent-storage)
 		
+
 #### **`Fetching Container Images:`**
 
 search for an image
@@ -101,19 +103,24 @@ $ sudo podman rm -a
 -  Ephemeral container storage is not sufficient for applications that need to keep data over restarts, such as databases. To support such applications, the administrator must provide a container with persistent storage.
 
 > *High level steps for creating persistent storage*
-- Create directory with owner and group root
-- grant write access to the directory for MYSQL service which has a UID of 27
+
 - Apply `container_file_t` context to the directory(all all subdirectories) to allow containers access to all of its contents
 - Apply SELinux container policy
-- Mount volume within container
 - confirm policy was applied
+- Mount volume within container
 
+> Create directory with owner and group root
 ```zsh
 $ sudo mkdir -pv /var/dbfiles
+```
+> Grant write access to the directory for MYSQL service which has a UID of 27
+```zsh
 $ sudo chown -Rv 27:27 /var/dbfiles
+```
 $ sudo semanage fcontext -a -t container_file_t 'var/dbfiles(/.*)?'
 $ sudo restorecon -R /var/dbfiles/
 $ ls -dZ /var/dbfiles
+$ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 ```
 
 ```zsh
