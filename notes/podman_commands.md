@@ -150,6 +150,9 @@ $ sudo podman run -d --name apache2 \
 > *To see ports assigned by podman, run:*
 ```zsh
 $ sudo podman port <container_name>
+>> 80/tcp -> 127.0.0.1:35134
+$ curl 127.0.0.1:35134
+>> <html><body><h1>It works!</h1></body></html>
 ```
 
 #### **`Example`:***
