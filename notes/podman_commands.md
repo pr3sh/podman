@@ -134,13 +134,22 @@ $ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 > *It is also important to note that, by default, all container networks are hidden from the host network. That is, containers typically can access the host network, but without explicit configuration, there is no access back into the container network.*
 
 ##### **`Mapping Network Ports: `**
+- In order to map a network port, you can use the **`sudo podman run`**, followed by the **`-p`** option. 
+- The **`-p`** option is following by [<IP address>:][<host port>:]<container port>
 
+> *For Example:*
 ```zsh
 #accessing container*
-$ sudo podman run -d --name apache4 -p 80 httpd:2.4
-
-# To see ports assigned by podman
-$ sudo podman port apache3
+$ sudo podman run -d --name apache1 -p 8080:80 rhscl/httpd-24-rhel7:2.4
+```
+> *You can also use the -p option to only forward requests to a container if those requests originate from a specified IP address:*
+```zsh
+$ sudo podman run -d --name apache2 \
+> -p 127.0.0.1:8081:80 rhscl/httpd-24-rhel7:2.4
+```
+> *To see ports assigned by podman, run:*
+```zsh
+$ sudo podman port <container_name>
 ```
 
 #### **`Example`:***
