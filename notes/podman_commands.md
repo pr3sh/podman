@@ -154,7 +154,12 @@ $ sudo podman port <container_name>
 $ curl 127.0.0.1:35134
 >> <html><body><h1>It works!</h1></body></html>
 ```
-
+- If only a container port is specified with the -p option, a random available host port is assigned to container. 
+- Requests to this assigned host port from any IP address are forwarded to the container port.
+```zsh
+$ sudo podman run -d --name apache4 -p 80 rhscl/httpd-24-rhel7:2.4
+$ sudo podman port apache4
+```
 #### **`Example`:***
 
 ```zsh
