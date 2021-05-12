@@ -12,6 +12,8 @@
 	- [Accessing Containers](#accessing-containers)
 		- [Mapping Network Ports](#mapping-network-ports)
 	- [Managing Container Images](#managing-container-images)
+		- [Useful Search CLI Options](#useful-search-cli-options)
+		- [Registry Authentication](#registry-authentication)
 		
 
 #### **`Fetching Container Images:`**
@@ -191,6 +193,7 @@ registeries listed in the **`/etc/containers/registries.conf`** configuration fi
 |  **`is-official=<true>`** or **`false>`** |  Show only images flagged as official.                                         | 
 | **`--tls-verify=<true>`** or **`false>`** | Enables or disables **`HTTPS`** certificate validation for all used registries.|    
 
+#### **`Registry Authentication: `**
 
 ```zsh
 # Save and image to file called *mysql.tar*, based on the RHEL image.
