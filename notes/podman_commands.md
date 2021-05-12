@@ -6,11 +6,12 @@
 	- [Running Containers](#running-containers)
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
 		- [Example](#example)
-	- [Managing Container Images](#managing-container-images)	
+	- [Managing Containers](#managing-containers)	
 	- [Creating Persistent Storage](#creating-persistent-storage)
 	- [Manipulating Container Images](#manipulating-container-images)
 	- [Accessing Containers](#accessing-containers)
 		- [Mapping Network Ports](#mapping-network-ports)
+	- [Managing Container Images](#managing-container-images)
 		
 
 #### **`Fetching Container Images:`**
@@ -49,7 +50,7 @@ $ sudo podman exec -it mysql-custom /bin/bash
 #connect to database within container
 $ mysql -uroot
 ```
-#### **`Managing Container Images:`**
+#### **`Managing Containers:`**
 - Listing containers
 ```zsh
 #list running contianers
@@ -169,12 +170,26 @@ $ sudo podman run --name mysqldb-port -e MYSQL_USER=user -e MYSQL_PASSWORD=mypa5
 	-v /var/local/mysql:/var/lib/mysql/data rascal/mysql-57-rhel7 
 ```
 
+
+
+#### **`Managing Container Images :`**
+
 Podman search command finds images by image name, user name., or description from all
-registeries listed in the `/etc/containers/registries.conf` configuration file 
+registeries listed in the **`/etc/containers/registries.conf`** configuration file. 
+> *Example Usage*
+**sudo podman search [OPTIONS] <term>**	
+#### **`Useful Search CLI Options:`**
 
-`$ sudo podman search [options]`	
+|         **Options**             |     **Description**                                                | 
+|---------------------------------|:------------------------------------------------------------------:|  
+| **`--limit <number>`**          | Limits the number of listed images per registry.                   | 
+| **`--filter <filter=value>`**   | Filter output based on conditions provided. Supported filters are:
+|								
+|:-------------------------------:|:------------------------------------------------------------------:|
+| **`-d`** or **`--detach`**      | means the container runs in the background                         |
+| **`--name`**                    | specify the name of the container                                  |
+| **`-e`**                        | helps specify environment variables                                |    
 
-#### **`manipulting container images:`**
 
 ```zsh
 # Save and image to file called *mysql.tar*, based on the RHEL image.
