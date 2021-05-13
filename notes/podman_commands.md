@@ -13,6 +13,7 @@
 	- [Managing Container Images](#managing-container-images)
 		- [Useful Search CLI Options](#useful-search-cli-options)
 		- [Registry Authentication](#registry-authentication)
+		- [Pulling Images](#pulling-images)
 	- [Manipulating Container Images](#manipulating-container-images)
 		
 
