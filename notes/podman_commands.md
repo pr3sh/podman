@@ -299,29 +299,31 @@ $ sudo podman commit mysql-basic mysql-custom
 | **`--format`**                  | Selects the format for the image. Valid options are **`oci`** and **`docker`**. |
 
 
-Container image registries support tags to distinguish multiple releases of the same project.
+Container image registries support tags to distinguish multiple releases of the same project. The syntax or tagging is demonstrated below.
 ```bash 
 $ sudo podman tag [OPTIONS] IMAGE[:TAG] \
 	[REGISTRYHOST/][USERNAME/]NAME[:TAG]	
 ```
-
-> Use different tag
+> Tag an image 
+```zsh
+$ sudo podman tag mysql-custom devops/mysql
+```
+> Use different tag.
 ```zsh
 $ sudo podman tag mysql-custom devops/mysql:snapshot
 ```
-> remove tag from the image
+> **NOTE:** *A single image can have multiple tags assigned using the podman tag command.*
+> Remove tag from the image
+```zsh
 $ sudo podman rmi devops/mysql:snapshot   									
-
-#Push image to registry
-#if we don't specify destination,podman will use one of the default registries.
-$ sudo podman push [OPTIONS] IMAGE [DESTINATION]
-$ sudo podman push quay.io/*USER_NAME*/ngix
-#oull image
-$ sudo podman pull docker.io/nginx:17
-
 ```
-
-
-
+- To publish an image to a registry, it must reside in the Podman's local storage and be tagged for identification purposes.
+- To push the image to the registry the syntax of the **`push`** subcommand is:
+**`sudo podman push [OPTIONS] IMAGE [DESTINATION]`**
+- If we don't specify destination, podman will use one of the default registries.
+> *Example of pushing an image to the Quay repository*
+```zsh
+$ sudo podman push quay.io/*USER_NAME*/ngix
+```
 
 
