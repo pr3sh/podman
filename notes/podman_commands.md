@@ -286,6 +286,7 @@ $ sudo podman diff <image_name>
 $ sudo podman inspect \
 	-f "{{range .Mounts}}{{println .Destination}}{{end}}" *CONTAINER_NAME/ID*
 ```
+> To commit the changes to another image
 ```zsh
 $ sudo podman commit mysql-basic mysql-custom	
 ```
@@ -297,20 +298,18 @@ $ sudo podman commit mysql-basic mysql-custom
 | **`--message`**                 | Includes a commit message to the registry.                                      |   
 | **`--format`**                  | Selects the format for the image. Valid options are **`oci`** and **`docker`**. |
 
- 
+
+Container image registries support tags to distinguish multiple releases of the same project.
 ```bash 
-
-# See the changes made in an image
-$ sudo podman diff <image_name>
-
-
-# tag an image
 $ sudo podman tag [OPTIONS] IMAGE[:TAG] \
 	[REGISTRYHOST/][USERNAME/]NAME[:TAG]	
+```
 
+> Use different tag
+```zsh
 $ sudo podman tag mysql-custom devops/mysql:snapshot
-
-#remove tag from the image
+```
+> remove tag from the image
 $ sudo podman rmi devops/mysql:snapshot   									
 
 #Push image to registry
