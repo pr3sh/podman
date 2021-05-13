@@ -271,13 +271,15 @@ $ sudo podman commit [OPTIONS] CONTAINER [REPOSITORY[:PORT]/]IMAGE[:TAG]
 $ sudo podman ps
 #Examine changes in image
 $ sudo podman diff <image_name>
+
+>> C /run
+>> C /run/mysqld
+>> A /run/mysqld/mysqld.pid
+>> A /run/mysqld/mysqld.sock
+>> A /run/mysqld/mysqld.sock.lock
+>> A /run/secrets
 ```
-> C /run
-> C /run/mysqld
-> A /run/mysqld/mysqld.pid
-> A /run/mysqld/mysqld.sock
-> A /run/mysqld/mysqld.sock.lock
-> A /run/secrets
+
 
 ```zsh
 $ sudo podman commit mysql-basic mysql-custom	
