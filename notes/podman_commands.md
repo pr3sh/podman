@@ -266,11 +266,11 @@ $ sudo podman commit [OPTIONS] CONTAINER [REPOSITORY[:PORT]/]IMAGE[:TAG]
 ```
 #### **`Useful Podman Commit Options:`**
 
-|         **Options**             |     **Description**                            | 
-|---------------------------------|:------------------------------------------:|  
-| **`--author`**         | Identifies who created the container image.                            | 
-| **`--message`** | Includes a commit message to the registry.                           |   
-| **--format **      | Selects the format for the image. Valid options are **`oci`** and **`docker`**. |
+|         **Options**             |     **Description**                                                             | 
+|---------------------------------|:-------------------------------------------------------------------------------:|  
+| **`--author`**                  | Identifies who created the container image.                                     | 
+| **`--message`**                 | Includes a commit message to the registry.                                      |   
+| **`--format`**                  | Selects the format for the image. Valid options are **`oci`** and **`docker`**. |
 
 
 $ sudo podman commit mysql-basic mysql-custom		       			
