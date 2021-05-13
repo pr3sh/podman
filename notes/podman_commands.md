@@ -264,6 +264,21 @@ $ sudo podman rmi -a
 ```zsh
 $ sudo podman commit [OPTIONS] CONTAINER [REPOSITORY[:PORT]/]IMAGE[:TAG]
 ```
+- To identify which files were changed, created, or deleted since the container was started, use the **`diff`** subcommand. 
+- This subcommand only requires the container name or **`container ID`**:
+```zsh
+#Get contianer ID
+$ sudo podman ps
+#Examine changes in image
+$ sudo podman diff <image_name>
+```
+> C /run
+> C /run/mysqld
+> A /run/mysqld/mysqld.pid
+> A /run/mysqld/mysqld.sock
+> A /run/mysqld/mysqld.sock.lock
+> A /run/secrets
+
 ```zsh
 $ sudo podman commit mysql-basic mysql-custom	
 ```
