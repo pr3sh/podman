@@ -216,7 +216,6 @@ $ sudo podman pull quay.io/bitnami/nginx #Pull from Quay registry
 ```zsh
 sudo podman images
 ```
-
 #### **`Manipulating Container Images :`**
 
 There are many different ways to manage container images, and this section will cover some of the techniques which we can use to do so, while adhering to DevOps principles.
@@ -252,7 +251,6 @@ $ sudo podman rmi [OPTIONS] IMAGE [IMAGE....]
 - You can avoid this by passing the **`--force`** when executing the **`rmi`** command. has the --force option. 
 - This option forces the removal of an image even if that the image is used by several containers or these containers are running. 
 - Podman stops and removes all containers using the forcefully removed image before removing it.
-
 > Delete all images not currently being used by a container, risky! 
 ```zsh
 $ sudo podman rmi -a 
