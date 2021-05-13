@@ -140,7 +140,7 @@ $ sudo podman run -v /var/dbfiles:/var/lib/mysql rhmap47/mysql
 
 ##### **`Mapping Network Ports: `**
 - In order to map a network port, you can use the **`sudo podman run`**, followed by the **`-p`** option. 
-- The **`-p`** option is following by [<IP address>:][<host port>:]<container port>
+- The **`-p`** option is following by **`[<IP address>:][<host port>:]<container port>`**.
 
 > *For Example:*
 ```zsh
