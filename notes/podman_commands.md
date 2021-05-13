@@ -264,6 +264,9 @@ $ sudo podman rmi -a
 ```zsh
 $ sudo podman commit [OPTIONS] CONTAINER [REPOSITORY[:PORT]/]IMAGE[:TAG]
 ```
+```zsh
+$ sudo podman commit mysql-basic mysql-custom	
+```
 #### **`Useful Podman Commit Options:`**
 
 |         **Options**             |     **Description**                                                             | 
@@ -272,9 +275,6 @@ $ sudo podman commit [OPTIONS] CONTAINER [REPOSITORY[:PORT]/]IMAGE[:TAG]
 | **`--message`**                 | Includes a commit message to the registry.                                      |   
 | **`--format`**                  | Selects the format for the image. Valid options are **`oci`** and **`docker`**. |
 
-
-$ sudo podman commit mysql-basic mysql-custom		       			
- ```
  
 ```bash 
 
