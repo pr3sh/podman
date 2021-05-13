@@ -279,8 +279,13 @@ $ sudo podman diff <image_name>
 >> A /run/mysqld/mysqld.sock.lock
 >> A /run/secrets
 ```
-
-
+> *The diff command only reports added, changed, or deleted files to the container file system.*
+> *Files that are mounted to a running container are not considered part of the container file system.*
+> *To retrieve the list of mounted files and directories for a running container, use the **`podman inspect`** command:*
+```zsh
+$ sudo podman inspect \
+	-f "{{range .Mounts}}{{println .Destination}}{{end}}" *CONTAINER_NAME/ID*
+```
 ```zsh
 $ sudo podman commit mysql-basic mysql-custom	
 ```
@@ -297,8 +302,7 @@ $ sudo podman commit mysql-basic mysql-custom
 
 # See the changes made in an image
 $ sudo podman diff <image_name>
-$ sudo podman inspect \
-	-f "{{range .Mounts}}{{println .Destination}}{{end}}" *CONTAINER_NAME/ID*
+
 
 # tag an image
 $ sudo podman tag [OPTIONS] IMAGE[:TAG] \
