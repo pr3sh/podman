@@ -215,9 +215,19 @@ $ sudo podman pull quay.io/bitnami/nginx #Pull from Quay registry
 ```zsh
 sudo podman images
 ```
+
+#### **`Manipulating Container Images :`**
+
+There are many different ways to manage container images, and this section will cover some of the techniques which we can use to do so, while adhering to DevOps principles.
+	1. Saving and image to a **`.tar`** file.
+	2. Publishing the container image to an image registry.
+> *Existing images from the Podman local storage can be saved to a .tar file using the **`podman save`** command. The generated file is not a regular TAR archive and contains image metadata and preserves the original image layers. Using this file, Podman can recreate the original image exactly as it was.*
+
+The syntax for saving using the **`podman save`** command is:
 ```zsh
 # Save and image to file called *mysql.tar*, based on the RHEL image.
 $ sudo podman save [-o FILE_NAME] IMAGE_NAME[:TAG]
+```
 $ sudo podman save -o mysql.tar registry.access.redhat.com/rhscl/mysql-57-rhel7
 
 # Load image based on tarfile 							
