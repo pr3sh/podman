@@ -4,8 +4,8 @@ This covers the creation of custom images within podman, based on **`Dockerfiles
 
 -  **`Table of contents`:**
 	- [Building Base Containers](#building-base-containers)
+	- [Building Images with Podman](#building-images-with-podman)
 		
-
 #### **`Building Base Containers: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
@@ -13,7 +13,7 @@ Building an image from a `Dockerfile` is a three-step process.
 	2. Write a the `Dockerfile`
 	3. Build the image with *Podman*
 
-- This is an example Dockerfile for building a simple Apache web server container:
+- This is an example **`Dockerfile`** for building a simple Apache web server container:
 ```bash
 #This is a comment line
 FROM ubi7/ubi:7.7
@@ -104,9 +104,6 @@ ADD http:domain.com/file.pdf /var/www/html
 ```bash
  RUN yum --diasblerepo=* --enablerepo="rhel-7-server-rpms" && yum update -y \
  		&& yum install -y httpd
-
-# build image based on Dockerfile instructions
-$ sudo podman build -t NAME:TAG DIR
 ```
 > **Red Hat** recommends applying similar formatting rules to other instructions accepting multiple parameters, such as **`LABEL`** and **`ENV`** as shown below:
 ```bash
@@ -117,7 +114,10 @@ LABEL version="2.0" \
 ENV MYSQL_ROOT_PASSWORD="my_password" \
     MYSQL_DATABASE "my_database"
 ```
+#### `Building Images with Podman: `**
+> The **`podman build`** command processes the **`Dockerfile`** and builds a new image based on the instructions it contains, using the syntax below.
 
+**`sudo podman build -t NAME:TAG DIR`**
 
 -*End-to-end example:*
 ```bash
