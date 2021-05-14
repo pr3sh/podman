@@ -173,12 +173,10 @@ Done!
 
 
 
-```python
-from pandas import DataFrame
-import pandas as pdf
+```javascript
+var name = "Bob"
 
-df = pd.read_csv()
-
+console.log(name)
 ```
 
 
