@@ -96,10 +96,8 @@ COPY ["<source>" .... "<destination>"]
 #You can also specify a URL resource
 ADD http:domain.com/file.pdf /var/www/html 
 ```
-- *If the source is a file system path, it must be inside the working directory.*
-- *If the file is compressed, then add the decompression command to the destination directory.*
-
-
+> *If the source is a file system path, it must be inside the working directory.*
+> *If the file is compressed, then add the decompression command to the destination directory.*
 
 *Example usage for best practices when running successsive commands.*
 
@@ -110,6 +108,16 @@ ADD http:domain.com/file.pdf /var/www/html
 # build image based on Dockerfile instructions
 $ sudo podman build -t NAME:TAG DIR
 ```
+> **Red Hat** recommends applying similar formatting rules to other instructions accepting multiple parameters, such as **`LABEL`** and **`ENV`** as shown below:
+```bash
+LABEL version="2.0" \
+      description="This is an example container image" \
+      creationDate="01-09-2017"
+
+ENV MYSQL_ROOT_PASSWORD="my_password" \
+    MYSQL_DATABASE "my_database"
+```
+
 
 -*End-to-end example:*
 ```bash
