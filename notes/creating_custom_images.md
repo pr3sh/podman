@@ -115,7 +115,7 @@ $ sudo podman build -t NAME:TAG DIR
 $ mkdir /docker-practice/Dockerfile
 $ vim  /docker-practice/Dockerfile  
 ```
-- Once you have opened the `Dockerfile` you can write your commmands to be executed.
+- Once you have opened the **`Dockerfile`** you can write your commmands to be executed.
 ```bash
 #Dockerfile 
 FROM ubi7/ubi:7.4
