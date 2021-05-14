@@ -3,7 +3,7 @@
 This covers the creation of custom images within podman, based on Dockerfiles
 
 
-A `Dockerfile` is a mechanism to automate the building of container images.
+A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
 	1. Create a working directory
 	2. Write a the `Dockerfile`
@@ -31,17 +31,17 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-D","FOREGROUND"]
 ```
 
-- `FROM` delcares the new container image extends
-- `LABEL` responsible for adding generic metadata. A label is a simple key-value pair.
-- `MAINTAINER` indicates the Author field of the generated container image\'s metadata.
-- `RUN` executes commands in a new layer on top of the current image.The shell used to execute command is /bin/bash
-- `EXPOSE` indicates that the container listens on a specified network port at runtime.
-- `ENTRYPOINT` defines both the command to be executed and the parameters.
-- `ENV` is responsible for defining environment variables.
-- `ADD` instruction copies files or folders from local or remote source and adds them to the container file system.
-- `COPY` copies files from the working directory and adds them to the contianers file system.
-- `CMD` provides the defult arguments for the `ENTRYPOINT` instruction.
-- `USER` specifies the username or the `UID` to use when running the contianer image for the `RUN`,`CMD`,& `ENTRYPOINT` instructions.
+- **`FROM`** delcares the new container image extends
+- **`LABEL`** responsible for adding generic metadata. A label is a simple key-value pair.
+- **`MAINTAINER`** indicates the Author field of the generated container image\'s metadata.
+- **`RUN`** executes commands in a new layer on top of the current image.The shell used to execute command is /bin/bash
+- **`EXPOSE`** indicates that the container listens on a specified network port at runtime.
+- **`ENTRYPOINT`** defines both the command to be executed and the parameters.
+- **`ENV`** is responsible for defining environment variables.
+- **`ADD`** instruction copies files or folders from local or remote source and adds them to the container file system.
+- **`COPY`** copies files from the working directory and adds them to the contianers file system.
+- **`CMD`** provides the defult arguments for the `ENTRYPOINT` instruction.
+- **`USER`** specifies the username or the `UID` to use when running the contianer image for the `RUN`,`CMD`,& `ENTRYPOINT` instructions.
 
 *It is good to define a different user other than root for security reasons.*
 
