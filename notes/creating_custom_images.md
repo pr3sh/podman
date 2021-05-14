@@ -45,7 +45,7 @@ CMD ["-D","FOREGROUND"]
 
 *It is good to define a different user other than root for security reasons.*
 
-### `CMD` and `ENTRYPOINT`
+#### `CMD` and `ENTRYPOINT`
 
 There are two formats for these commands.
 - *Exec form*, which uses a `JSON` array:
@@ -77,7 +77,7 @@ $ sudo podman run it <image_name>  +%A
 #define both entry point and command to be executed
 ENTRYPOINT ["/bin/date","+%H:%M"]
 ```
-### `ADD` and `COPY`
+### **`ADD`** and **`COPY`**
 *Different forms:*
 ```bash
 #Shell
