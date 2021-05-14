@@ -5,7 +5,7 @@ This covers the creation of custom images within podman, based on **`Dockerfiles
 -  **`Table of contents`:**
 	- [Building Base Containers](#building-base-containers)
 	- [Building Images with Podman](#building-images-with-podman)
-		
+	- [Full Example](#full-example)	
 #### **`Building Base Containers: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
@@ -119,7 +119,11 @@ ENV MYSQL_ROOT_PASSWORD="my_password" \
 
 **`sudo podman build -t NAME:TAG DIR`**
 
--*End-to-end example:*
+- **`DIR`** is the path to the working directory, which includes the **`Dockerfile`**. 
+- **`NAME:TAG`** is a name with a tag given to the new image. 
+- If **`TAG`** is not specified, then the image is automatically tagged as **`latest`**.
+
+#### **`Full Example: `**
 ```bash
 
 $ mkdir /docker-practice/Dockerfile
