@@ -1,14 +1,19 @@
 ### Abstract
 
-This covers the creation of custom images within podman, based on Dockerfiles
+This covers the creation of custom images within podman, based on **`Dockerfiles`**
 
+-  **`Table of contents`:**
+	- [Overview](#overview)
+	- [Building Base Containers](#building-base-containers)
+	- [Running Containers](#running-containers)
+		
 
+#### **`Overview: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
 	1. Create a working directory
 	2. Write a the `Dockerfile`
 	3. Build the image with *Podman*
-
 
 - This is an example Dockerfile for building a simple Apache web server container:
 ```bash
@@ -30,7 +35,6 @@ USER apache
 ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-D","FOREGROUND"]
 ```
-
 - **`FROM`** delcares the new container image extends
 - **`LABEL`** responsible for adding generic metadata. A label is a simple key-value pair.
 - **`MAINTAINER`** indicates the Author field of the generated container image\'s metadata.
