@@ -48,15 +48,13 @@ CMD ["-D","FOREGROUND"]
 *It is good to define a different user other than root for security reasons.*
 
 #### `CMD` and `ENTRYPOINT`
-
-There are two formats for these commands.
-- *Exec form*, which uses a `JSON` array:
+There are **two** formats for these commands.
+> *Exec form*, which uses a `JSON` array:
 ```bash
 ENTRYPOINT ["command","param1","param2"]
 CMD ["param1","param2"]
 ```
-- *Shell form*:
-
+> *Shell form*:
 ```bash
 ENTRYPOINT "command","param1","param2"
 CMD "param1","param2"
