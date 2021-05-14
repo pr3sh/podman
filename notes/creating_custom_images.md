@@ -128,11 +128,12 @@ $ mkdir /docker-practice/Dockerfile
 $ vim  /docker-practice/Dockerfile  
 ```
 - Once you have opened the **`Dockerfile`** you can write your commmands to be executed.
+
 ```bash
 #Dockerfile 
 FROM ubi7/ubi:7.4
 
-MAINTAINER your nme <your_email>
+MAINTAINER your name <your_email>
 
 ENV PORT 8188
 
@@ -151,18 +152,19 @@ COPY ./src/ /var/www/html/
 
 #start apache in the foreground
 CMD ["httpd","-D","FOREGROUND"]
-
-# after you close and save file, build image based on Dockerfile.
-
+```
+> After you close and save file, build image based on **`Dockerfile`** .
+```zsh
 $ sudo podman build --layers=false \
 	-t <image_name> <directory_of_docker_file>
-
-# verify custom image was built successfully.
+```
+> Verify custom image was built successfully.
+```zsh
 $ sudo podman images
 >> REPOSITORY  			      TAG					IMAGE ID
 localhost/<image_name>		latest       		dhsh459dk
 ```
-- You can then `run` containers based on these images or `commit` them to a registry.
+- You can then **`run`** containers based on these images or **`commit`** them to a registry.
 
 Done!
 
