@@ -56,6 +56,7 @@ ENTRYPOINT ["command","param1","param2"]
 CMD ["param1","param2"]
 ```
 - *Shell form*:
+
 ```bash
 ENTRYPOINT "command","param1","param2"
 CMD "param1","param2"
@@ -64,18 +65,19 @@ CMD "param1","param2"
 # Docker file should contain at most one ENTRYPOINT and one CMD instruction.
 # if more than one of each is present, then only last instruction takes effect.
 ```
-*Example usage of `ENTRYPOINT` and `CMD`:*
+> Example usage of **`ENTRYPOINT`** and **`CMD: `**
 
 ```bash
 ENTRYPOINT ["/bin/date"]
 CMD ["+%H:%M"]
+```
+```zsh
 # run the image that was build with these params
 $ sudo podman run it <image_name> 
 >> 10:50 am
 #modify command
 $ sudo podman run it <image_name>  +%A
 >> Tuesday
-
 #define both entry point and command to be executed
 ENTRYPOINT ["/bin/date","+%H:%M"]
 ```
