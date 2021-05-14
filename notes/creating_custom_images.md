@@ -3,12 +3,10 @@
 This covers the creation of custom images within podman, based on **`Dockerfiles`**
 
 -  **`Table of contents`:**
-	- [Overview](#overview)
 	- [Building Base Containers](#building-base-containers)
-	- [Running Containers](#running-containers)
 		
 
-#### **`Overview: `**
+#### **`Building Base Containers: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
 	1. Create a working directory
