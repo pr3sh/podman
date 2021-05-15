@@ -19,10 +19,6 @@ Examine an example of an application which is comprised of a front-end, back-end
 
 <img src="./images/multicontainer-consideration.png" >
 
-![]()
-
-
-
 
 - change into directory with your directory contianing your **Dockerfile**, and build your **`my-sql`** image.
 
@@ -43,6 +39,10 @@ $ sudo podman build -t do180/mysql-rhel7 --layers=false .
 - Change into directory containing **`Dockerfile`** of the **`node.js`** image, and build it as well.
 ```zsh
 $ sudo podman build -t do180/nodejs --layers=false .
+```
+- Build **`Node.js`** child image.
+```zsh
+$ ./build.sh
 ```
 - Verify that the images were build successfully.
 ```zsh
