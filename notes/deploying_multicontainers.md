@@ -18,18 +18,13 @@ Examine an example of an application which is comprised of a front-end, back-end
 
 <img src="/images/multicontainer-consideration.png" >
 
+
+
+
+
+
+
 - change into directory with your directory contianing your **Dockerfile**, and build your **`my-sql`** image.
-
-
-
-
-
-
-
-
-
-
-
 
 ### Directory layout for **`my-sql`** build
     .
@@ -39,14 +34,16 @@ Examine an example of an application which is comprised of a front-end, back-end
     └── README.md
 
 - High-level steps of building a multi-container application which is based on **`node.js`** front-end , **`REST`** backend, and **`my-sql`** database for storage.
+> Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
 ```bash 
 #build sql image
-$ sudo podman build -t path/to/mysql-rhel7 --layers=false
-
+$ sudo podman build -t do180/mysql-rhel7 --layers=false .
+```
+> Change into directory
+```zsh
 #build node application
-$ sudo podmn build --layers=false -t path/to/nodejs  \
-			--build-args NEXUS_BASE_URL=${NEXUS_SERVER}
-
+$ sudo podman build -t do180/nodejs --layers=false .
+```
 $ sudo podman images
 
 
