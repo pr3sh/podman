@@ -17,12 +17,12 @@ The objective of this guy is to cover deployments of multicontainer applications
 > *Example*
 Examine an example of an application which is comprised of a front-end, back-end, and a database, all of which are containers of their own. The front-end container needs to retrieve the IP address of the back-end container. Similarly, the back-end container needs to retrieve the IP address of the database container. Additionally, the IP address could change if a container restarts, so a process is needed to ensure any change in IP triggers an update to existing containers.
 
-<img src="./images/multicontainer-consideration.png" >
+<img src="./images/multicontainer-consideration.png" width="100" height="100" >
 
 #### **`Example: `**
 This example walks through building a multicontainer application using **`podman`** from a high-level. The application as illustrated below,is based on **`node.js`** front-end , **`REST`** backend, and **`MySQL`** database for storage.
 
-<img src="./images/todo-logical.png" >
+<img src="./images/todo-logical.png" width="100" height="100" >
 
 - Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
 ```bash 
