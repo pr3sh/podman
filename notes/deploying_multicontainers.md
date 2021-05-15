@@ -2,7 +2,7 @@
 
 
 -  **`Table of contents`:**
-	- [Fetching Container Images](#fetching-container-images)
+	- [Understing Multicontainer Deployments](#understanding-multicontainer-deployments)
 	- [Running Containers](#running-containers)
 		- [Useful Podman CLI Options](#useful-podman-cli-options)
 		- [Example](#example)
