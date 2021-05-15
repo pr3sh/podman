@@ -19,18 +19,10 @@ Examine an example of an application which is comprised of a front-end, back-end
 
 <img src="./images/multicontainer-consideration.png" >
 
-
-- change into directory with your directory contianing your **Dockerfile**, and build your **`my-sql`** image.
-
-### Directory layout for **`my-sql`** build
-    .
-    ├── Dockerfile                                                      
-    ├── training.repo                    
-    ├── root                    
-    └── README.md
-
-- High-level steps of building a multi-container application which is based on **`node.js`** front-end , **`REST`** backend, and **`my-sql`** database for storage.
 #### **`Example: `**
+This example walks through building a multicontainer application using **`podman`** from a high-level. The application as illustrated below,is based on **`node.js`** front-end , **`REST`** backend, and **`MySQL`** database for storage.
+<img src="./images/todo-logical.png" >
+
 - Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
 ```bash 
 #build sql image
