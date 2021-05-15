@@ -43,3 +43,6 @@ $ sudo podman images \
 	 --format "table {{.ID}} {{.Repository}} {{.Tag}}"
 ```
 
+
+
+>**`NOTE: `** *Images are not mine, and are originally from RedHat.*
