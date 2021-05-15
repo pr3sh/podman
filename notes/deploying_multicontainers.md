@@ -15,7 +15,8 @@ The objective of this guy is to cover deployments of multicontainer applications
 
 > *Example*
 Examine an example of an application which is comprised of a front-end, back-end, and a database, all of which are containers of their own. The front-end container needs to retrieve the IP address of the back-end container. Similarly, the back-end container needs to retrieve the IP address of the database container. Additionally, the IP address could change if a container restarts, so a process is needed to ensure any change in IP triggers an update to existing containers.
-<img src="https://github.com/pr3sh/podman/notes/images/multicontainer-consideration.png")
+
+<img src="https://github.com/pr3sh/podman/tree/main/notes/images/multicontainer-consideration.png")>
 
 - change into directory with your directory contianing your **Dockerfile**, and build your **`my-sql`** image.
 
