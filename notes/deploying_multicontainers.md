@@ -1,16 +1,13 @@
-# **`Abstract: `**
-
-
--  **`Table of contents`:**
-	- [Understing Multicontainer Deployments](#understanding-multicontainer-deployments)
-	- [Running Containers](#running-containers)
-		- [Useful Podman CLI Options](#useful-podman-cli-options)
-		- [Example](#example)
+## **`Abstract: `**
 
 The objective of this guy is to cover deployments of multicontainer applications using **`podman`**.
 
+-  **`Table of contents`:**
+	- [Understing Multicontainer Deployments](#understanding-multicontainer-deployments)
 
-Podman uses Container Network Interface (CNI) to create a software-defined network (SDN) between all containers in the host. Unless stated otherwise, CNI assigns a new IP address to a container when it starts.
+#### **`Understanding Multicontainer Deployments:`**
+- **`Podman`** uses Container Network Interface **`(CNI)`** to create a software-defined network **`(SDN)`** between all containers in the host.
+- **`CNI`** assigns a new IP address to a container when it starts.
 
 Each container exposes all ports to other containers in the same SDN. As such, services are readily accessible within the same network. The containers expose ports to external networks only by explicit configuration.
 
