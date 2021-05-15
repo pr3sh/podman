@@ -34,18 +34,20 @@ Examine an example of an application which is comprised of a front-end, back-end
     └── README.md
 
 - High-level steps of building a multi-container application which is based on **`node.js`** front-end , **`REST`** backend, and **`my-sql`** database for storage.
+
 > Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
 ```bash 
 #build sql image
 $ sudo podman build -t do180/mysql-rhel7 --layers=false .
 ```
-> Change into directory
+> Change into directory containing **`Dockerfile`** of the **`node.js`** image, and build it as well.
 ```zsh
-#build node application
 $ sudo podman build -t do180/nodejs --layers=false .
 ```
+> Verify that the images were build successfully.
+```zsh
 $ sudo podman images
-
+```
 
 
 ```
