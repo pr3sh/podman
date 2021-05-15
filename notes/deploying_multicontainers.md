@@ -4,6 +4,7 @@ The objective of this guy is to cover deployments of multicontainer applications
 
 -  **`Table of contents`:**
 	- [Understing Multicontainer Deployments](#understanding-multicontainer-deployments)
+	- [Example](#example)
 
 #### **`Understanding Multicontainer Deployments:`**
 - **`Podman`** uses Container Network Interface **`(CNI)`** to create a software-defined network **`(SDN)`** between all containers in the host.
@@ -16,10 +17,9 @@ The objective of this guy is to cover deployments of multicontainer applications
 > *Example*
 Examine an example of an application which is comprised of a front-end, back-end, and a database, all of which are containers of their own. The front-end container needs to retrieve the IP address of the back-end container. Similarly, the back-end container needs to retrieve the IP address of the database container. Additionally, the IP address could change if a container restarts, so a process is needed to ensure any change in IP triggers an update to existing containers.
 
-<img src="/images/multicontainer-consideration.png" >
+<img src="./images/multicontainer-consideration.png" >
 
-
-
+![]()
 
 
 
@@ -34,20 +34,19 @@ Examine an example of an application which is comprised of a front-end, back-end
     └── README.md
 
 - High-level steps of building a multi-container application which is based on **`node.js`** front-end , **`REST`** backend, and **`my-sql`** database for storage.
-
-> Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
+#### **`Example: `**
+- Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
 ```bash 
 #build sql image
 $ sudo podman build -t do180/mysql-rhel7 --layers=false .
 ```
-> Change into directory containing **`Dockerfile`** of the **`node.js`** image, and build it as well.
+- Change into directory containing **`Dockerfile`** of the **`node.js`** image, and build it as well.
 ```zsh
 $ sudo podman build -t do180/nodejs --layers=false .
 ```
-> Verify that the images were build successfully.
+- Verify that the images were build successfully.
 ```zsh
-$ sudo podman images
+$ sudo podman images \
+	 --format "table {{.ID}} {{.Repository}} {{.Tag}}"
 ```
 
-
-```
