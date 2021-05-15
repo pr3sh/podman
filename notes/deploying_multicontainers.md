@@ -21,6 +21,7 @@ Examine an example of an application which is comprised of a front-end, back-end
 
 #### **`Example: `**
 This example walks through building a multicontainer application using **`podman`** from a high-level. The application as illustrated below,is based on **`node.js`** front-end , **`REST`** backend, and **`MySQL`** database for storage.
+
 <img src="./images/todo-logical.png" >
 
 - Change into directory containining **`Dockerfile`** of the **`MySQL`** image, and build that.
