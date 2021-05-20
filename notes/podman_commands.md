@@ -39,7 +39,7 @@ $ sudo podman run  rhel7:7.5 echo "Hello world" 	# run the rhel image and echo "
 | **`-t`** or **`--tty`**         | pseudo-terminal                            | 
 | **`-i`** or **`--interactive`** | Interactive mode                           |   
 | **`-d`** or **`--detach`**      | means the container runs in the background |
-| --name`**                    | specify the name of the container          |
+| **--name**                    | specify the name of the container          |
 | **`-e`**                        | helps specify environment variables        |    
 
 #### **`Example`:**
