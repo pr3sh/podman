@@ -21,7 +21,7 @@
 #### **`Fetching Container Images:`**
 
 search for an image
-```zsh
+```bash
 $ sudo podman search rhel                	
 $ sudo podman pull <image_name> #Pull an image                    	
 $ sudo podman images #List current images
