@@ -112,7 +112,7 @@ LABEL version="2.0" \
 ENV MYSQL_ROOT_PASSWORD="my_password" \
     MYSQL_DATABASE "my_database"
 ```
-#### `Building Images with Podman: `**
+#### **`Building Images with Podman: `**
 > The **`podman build`** command processes the **`Dockerfile`** and builds a new image based on the instructions it contains, using the syntax below.
 
 **`sudo podman build -t NAME:TAG DIR`**
