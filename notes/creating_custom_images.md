@@ -172,19 +172,3 @@ Done!
 
 
 
-
-```javascript
-var name = "Bob"
-
-console.log(name)
-```
-
-
-
-
-
-
-
-
-
-
