@@ -55,6 +55,11 @@ CMD ["-D","FOREGROUND"]
 |  **`io.k8s.description`**             | Provide consumers of the container image detailed information about the services the image provides.  |   
 | **`io.openshift.expose- services`**   | Contains a list of service ports that match the EXPOSE instructions in the Dockerfile.                |
 
+- **`WORKDIR`** sets the working directory for any following **`RUN`**, **`CMD`**, **`ENTRYPOINT`**, **`COPY`**, or **`ADD`** instructions in a **Dockerfile**.
+
+> Red Hat recommends using absolute paths in **`WORKDIR`** instructions. Use **`WORKDIR`** instead of multiple **`RUN`** instructions where you change directories and then run some commands. This approach ensures better maintainability in the long run and is easier to troubleshoot.
+- **`ONBUILD`** instruction registers triggers in the container image. A Dockerfile uses **`ONBUILD`** to declare instructions that are executed only when building a child image.
+
 #### `CMD` and `ENTRYPOINT`
 There are **two** formats for these commands.
 > *Exec form*, which uses a `JSON` array:
@@ -71,7 +76,7 @@ CMD "param1","param2"
 # Docker file should contain at most one ENTRYPOINT and one CMD instruction.
 # if more than one of each is present, then only last instruction takes effect.
 ```
-> Example usage of **`ENTRYPOINT`** and **`CMD: `**
+> Example usage of **`ENTRYPOINT`** and **`CMD:`**
 
 ```bash
 ENTRYPOINT ["/bin/date"]
