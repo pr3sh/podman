@@ -62,7 +62,7 @@ CMD ["-D","FOREGROUND"]
 
 #### `CMD` and `ENTRYPOINT`
 There are **two** formats for these commands.
-> *Exec form*, which uses a `JSON` array:
+> *Exec form*, which uses a **`JSON`** array:
 ```bash
 ENTRYPOINT ["command","param1","param2"]
 CMD ["param1","param2"]
