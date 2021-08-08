@@ -6,12 +6,13 @@ This covers the creation of custom images within podman, based on **`Dockerfiles
 	- [Building Base Containers](#building-base-containers)
 	- [Building Images with Podman](#building-images-with-podman)
 	- [Full Example](#full-example)	
+
 #### **`Building Base Containers: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
 	1. Create a working directory
 	2. Write a the `Dockerfile`
-	3. Build the image with *Podman*
+	3. Build the image with **`Podman`**.
 
 - This is an example **`Dockerfile`** for building a simple Apache web server container:
 ```bash
@@ -34,7 +35,6 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-D","FOREGROUND"]
 ```
 - **`FROM`** delcares the new container image extends
-- **`LABEL`** responsible for adding generic metadata. A label is a simple key-value pair.
 - **`MAINTAINER`** indicates the Author field of the generated container image\'s metadata.
 - **`RUN`** executes commands in a new layer on top of the current image.The shell used to execute command is /bin/bash
 - **`EXPOSE`** indicates that the container listens on a specified network port at runtime.
@@ -42,10 +42,18 @@ CMD ["-D","FOREGROUND"]
 - **`ENV`** is responsible for defining environment variables.
 - **`ADD`** instruction copies files or folders from local or remote source and adds them to the container file system.
 - **`COPY`** copies files from the working directory and adds them to the contianers file system.
-- **`CMD`** provides the defult arguments for the `ENTRYPOINT` instruction.
-- **`USER`** specifies the username or the `UID` to use when running the contianer image for the `RUN`,`CMD`,& `ENTRYPOINT` instructions.
+- **`CMD`** provides the defult arguments for the **`ENTRYPOINT`** instruction.
+- **`USER`** specifies the username or the **`UID`** to use when running the contianer image for the **`RUN`**,**`CMD`**,& **`ENTRYPOINT`** instructions.
+- **`LABEL`** responsible for adding generic metadata. A label is a simple key-value pair.
+	- When building images for OpenShift, prefix the label name with **`io.openshift`** to distinguish between OpenShift and Kubernetes related metadata.
+	- The OpenShift tooling can parse specific labels and perform specific actions based on the presence of these labels. The table below lists some of the most commonly used tags.
 
-*It is good to define a different user other than root for security reasons.*
+#### **`OpenShift Supported Labels:`**
+|         **`Label Name`**              |       **`Description`**                                                                               | 
+|---------------------------------------|:-----------------------------------------------------------------------------------------------------:|  
+| **`io.openshift.tags`**               | This label contains a list of comma-separated tags.                                                   | 
+|  **`io.k8s.description`**             | Provide consumers of the container image detailed information about the services the image provides.  |   
+| **`io.openshift.expose- services`**   | Contains a list of service ports that match the EXPOSE instructions in the Dockerfile.                |
 
 #### `CMD` and `ENTRYPOINT`
 There are **two** formats for these commands.
@@ -165,6 +173,9 @@ $ sudo podman images
 localhost/<image_name>		latest       		dhsh459dk
 ```
 - You can then **`run`** containers based on these images or **`commit`** them to a registry.
+
+#### **`Advanced Dockerfile Instructions` :**
+
 
 Done!
 
