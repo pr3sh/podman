@@ -46,6 +46,7 @@ CMD ["-D","FOREGROUND"]
 - **`COPY`** copies files from the working directory and adds them to the contianers file system.
 - **`CMD`** provides the defult arguments for the **`ENTRYPOINT`** instruction.
 - **`USER`** specifies the username or the **`UID`** to use when running the contianer image for the **`RUN`**,**`CMD`**,& **`ENTRYPOINT`** instructions.
+- **`WORKDIR`** sets the working directory for any following **`RUN`**, **`CMD`**, **`ENTRYPOINT`**, **`COPY`**, or **`ADD`** instructions in a **`Dockerfile`**.
 - **`LABEL`** responsible for adding generic metadata. A label is a simple key-value pair.
 	- When building images for OpenShift, prefix the label name with **`io.openshift`** to distinguish between OpenShift and Kubernetes related metadata.
 	- The OpenShift tooling can parse specific labels and perform specific actions based on the presence of these labels. The table below lists some of the most commonly used tags.
