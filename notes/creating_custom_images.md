@@ -213,7 +213,7 @@ allow users in the **`root`** group to access them in the container:
 - To do so, you first need to create a service account. A service account is the OpenShift identity for a pod. All pods from a project run under a default service account, unless the pod, or its deployment configuration, is configured otherwise.
 - If you have an application that requires a capability not granted by the restricted **`SCC`**, then create a new, specific service account, add it to the appropriate SCC, and change the deployment configuration that creates the application pods to use the new service account.
 
-> *The following steps detail how to allow containers to run as the root user in an OpenShift project*
+> *The following steps detail how to allow containers to run as the **`root`** user in an OpenShift project*
 
 > Create a new service account
 ```zsh
