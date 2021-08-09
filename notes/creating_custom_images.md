@@ -6,6 +6,7 @@ This covers the creation of custom images within podman, based on **`Dockerfiles
 	- [Building Base Containers](#building-base-containers)
 	- [Building Images with Podman](#building-images-with-podman)
 	- [Full Example](#full-example)	
+	- [OpenShift Considerations for the USER Instruction](#openshift-considerations-for-user-instruction)
 
 #### **`Building Base Containers: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
@@ -59,6 +60,8 @@ CMD ["-D","FOREGROUND"]
 
 > Red Hat recommends using absolute paths in **`WORKDIR`** instructions. Use **`WORKDIR`** instead of multiple **`RUN`** instructions where you change directories and then run some commands. This approach ensures better maintainability in the long run and is easier to troubleshoot.
 - **`ONBUILD`** instruction registers triggers in the container image. A Dockerfile uses **`ONBUILD`** to declare instructions that are executed only when building a child image.
+> *The Dockerfile for the child image could be as simple as having just the **`FROM`** instruction that references the parent image. The **`ONBUILD`** instruction is useful to support easy customization of a container image for common use cases, such as preloading data or providing custom configuration to an application. The parent image provides commands that are common to all downstream child images. The child image only provides the data and configuration files. The Dockerfile for the child image could be as simple as having just the FROM instruction that references the parent image.*
+
 
 #### `CMD` and `ENTRYPOINT`
 There are **two** formats for these commands.
@@ -179,7 +182,16 @@ localhost/<image_name>		latest       		dhsh459dk
 ```
 - You can then **`run`** containers based on these images or **`commit`** them to a registry.
 
-#### **`Advanced Dockerfile Instructions` :**
+#### **`OpenShift Considerations for the USER Instruction` :**
+By default, OpenShift runs containers using an arbitrarily assigned userid. This approach mitigates the risk of processes running in the container getting escalated privileges on the host machine due to security vulnerabilities in the container engine.
+
+- When you write or change a Dockerfile that builds an image to run on an OpenShift cluster, you need to address the following:
+	- Directories and files that are read from or written to by processes in the container should be owned by the root group and have group read or group write permission.
+	- Files that are executable should have group execute permissions.
+	- The processes running in the container must not listen on privileged ports (that is, ports below 1024), because they are not running as privileged users.
+
+> Adding the following RUN instruction to your **`Dockerfile`** sets the directory and file permissions to
+allow users in the root group to access them in the container:
 
 
 Done!
