@@ -7,6 +7,7 @@ This covers the creation of custom images within podman, based on **`Dockerfiles
 	- [Building Images with Podman](#building-images-with-podman)
 	- [Full Example](#full-example)	
 	- [OpenShift Considerations for the USER Instruction](#openshift-considerations-for-user-instruction)
+		- [Running Containers as root Using Security Context](#running-containers-as-root-using-security-context)
 
 #### **`Building Base Containers: `**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
@@ -191,8 +192,41 @@ By default, OpenShift runs containers using an arbitrarily assigned userid. This
 	- The processes running in the container must not listen on privileged ports (that is, ports below 1024), because they are not running as privileged users.
 
 > Adding the following RUN instruction to your **`Dockerfile`** sets the directory and file permissions to
-allow users in the root group to access them in the container:
+allow users in the **`root`** group to access them in the container:
 
+```zsh
+ RUN chgrp -R 0 directory &&  chmod -R g=u directory
+```
+- The user account that runs the container is always a member of the root group, hence the container can read and write to this directory. 
+- The root group does not have any special permissions (**`unlike the root user`**) which minimizes security risks with this configuration.
+- The **`g=u`** argument from the **`chmod`** command makes the group permissions *equal to the owner user* permissions, which by default are read and write. You can use the **`g+rwX`** argument with the same results.
+
+#### **`Running Containers as root Using Security Context`:**
+
+- In certain cases, you may not have access to **`Dockerfiles`** for certain images. You may need to run the image as the root user. 
+- In this scenario, you need to configure OpenShift to allow containers to run as root.
+- OpenShift provides **`Security Context Constraints`** (SCCs), which control the actions that a pod can perform and which resources it can access. 
+- OpenShift ships with a number of built-in SCCs. All containers created by OpenShift use the **`SCC`** named restricted by **`default`**, which ignores the **`userid`** set by the container image, and assigns a random **`userid`** to containers.
+- To allow containers to use a fixed userid, such as 0 (the root user), you need to use the *anyuid* **`SCC`**. 
+- To do so, you first need to create a service account. A service account is the OpenShift identity for a pod. All pods from a project run under a default service account, unless the pod, or its deployment configuration, is configured otherwise.
+- If you have an application that requires a capability not granted by the restricted **`SCC`**, then create a new, specific service account, add it to the appropriate SCC, and change the deployment configuration that creates the application pods to use the new service account.
+
+> *The following steps detail how to allow containers to run as the root user in an OpenShift project*
+
+> Create a new service account
+```zsh
+[user@host ~]$ oc create serviceaccount myserviceaccount
+```
+> Modify the deployment configuration for the application to use the new service account.
+```zsh
+ [user@host ~]$ oc patch dc/demo-app --patch \
+ 		'{"spec":{"template":{"spec":{"serviceAccountName": "myserviceaccount"}}}}'
+```
+> Add the *myserviceaccount* service account to the *anyuid* **`SCC`** to run using a fixed **`userid`** in
+the container
+```zsh
+[user@host ~]$ oc adm policy add-scc-to-user anyuid -z myserviceaccount
+```
 
 Done!
 
