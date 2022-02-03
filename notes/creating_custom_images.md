@@ -231,6 +231,11 @@ the container
  		'{"spec":{"template":{"spec":{"serviceAccountName": "myserviceaccount"}}}}'
 ```
 
+> A more convenient way to modify the deployment by using the **`oc set serviceaccount`** command:
+```zsh
+[user@host ~]$ oc set serviceaccount deployment/demo-app myserviceaccount
+```
+
 
 Done!
 
