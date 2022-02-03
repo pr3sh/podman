@@ -1,4 +1,4 @@
-### **`Abstract:`**
+# **`Abstract:`**
 
 This covers the creation of custom images within podman, based on **`Dockerfiles`**
 
@@ -9,7 +9,7 @@ This covers the creation of custom images within podman, based on **`Dockerfiles
 	- [OpenShift Considerations for the USER Instruction](#openshift-considerations-for-user-instruction)
 		- [Running Containers as root Using Security Context](#running-containers-as-root-using-security-context)
 
-#### **`Building Base Containers: `**
+#### **`Building Base Containers`:**
 A **`Dockerfile`** is a mechanism to automate the building of container images.
 Building an image from a `Dockerfile` is a three-step process.
 	1. Create a working directory
@@ -131,7 +131,7 @@ LABEL version="2.0" \
 ENV MYSQL_ROOT_PASSWORD="my_password" \
     MYSQL_DATABASE "my_database"
 ```
-#### **`Building Images with Podman: `**
+#### **`Building Images with Podman`:**
 > The **`podman build`** command processes the **`Dockerfile`** and builds a new image based on the instructions it contains, using the syntax below.
 
 **`sudo podman build -t NAME:TAG DIR`**
@@ -140,7 +140,7 @@ ENV MYSQL_ROOT_PASSWORD="my_password" \
 - **`NAME:TAG`** is a name with a tag given to the new image. 
 - If **`TAG`** is not specified, then the image is automatically tagged as **`latest`**.
 
-#### **`Full Example: `**
+#### **`Full Example`:**
 ```bash
 
 $ mkdir /docker-practice/Dockerfile
@@ -185,7 +185,7 @@ localhost/<image_name>		latest       		dhsh459dk
 ```
 - You can then **`run`** containers based on these images or **`commit`** them to a registry.
 
-#### **`OpenShift Considerations for the USER Instruction` :**
+#### **`OpenShift Considerations for the USER Instruction`:**
 By default, OpenShift runs containers using an arbitrarily assigned userid. This approach mitigates the risk of processes running in the container getting escalated privileges on the host machine due to security vulnerabilities in the container engine.
 
 - When you write or change a Dockerfile that builds an image to run on an OpenShift cluster, you need to address the following:
@@ -219,16 +219,18 @@ allow users in the **`root`** group to access them in the container:
 ```zsh
 [user@host ~]$ oc create serviceaccount myserviceaccount
 ```
-> Modify the deployment configuration for the application to use the new service account.
-```zsh
- [user@host ~]$ oc patch dc/demo-app --patch \
- 		'{"spec":{"template":{"spec":{"serviceAccountName": "myserviceaccount"}}}}'
-```
 > Add the *myserviceaccount* service account to the *anyuid* **`SCC`** to run using a fixed **`userid`** in
 the container
 ```zsh
 [user@host ~]$ oc adm policy add-scc-to-user anyuid -z myserviceaccount
 ```
+
+> Modify the deployment configuration for the application to use the new service account.
+```zsh
+ [user@host ~]$ oc patch dc/demo-app --patch \
+ 		'{"spec":{"template":{"spec":{"serviceAccountName": "myserviceaccount"}}}}'
+```
+
 
 Done!
 
